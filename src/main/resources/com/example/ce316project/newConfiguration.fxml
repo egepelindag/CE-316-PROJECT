@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="526.0" prefWidth="600.0" style="-fx-background-color: darkcyan;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ce316project.Controller">
+    <children>
+        <TextField fx:id="newConfigName" layoutX="72.0" layoutY="48.0" prefHeight="42.0" prefWidth="467.0" promptText="Configuration Name" />
+        <TextField fx:id="newConfigParameters" layoutX="72.0" layoutY="107.0" prefHeight="42.0" prefWidth="467.0" promptText="Compiler Paramaters" />
+        <TextField fx:id="newConfigMainFile" layoutX="72.0" layoutY="164.0" prefHeight="42.0" prefWidth="467.0" promptText="Main File" />
+        <TextField fx:id="newConfigExeName" layoutX="72.0" layoutY="220.0" prefHeight="42.0" prefWidth="467.0" promptText="Program Executable Name" />
+        <TextField fx:id="newConfigPath" layoutX="100.0" layoutY="360.0" prefHeight="42.0" prefWidth="347.0" promptText="Compiler Path" />
+        <Line endX="499.0" layoutX="101.0" layoutY="297.0" startX="-100.0" stroke="ORANGE" />
+        <Line endX="499.0" layoutX="101.0" layoutY="441.0" startX="-100.0" stroke="ORANGE" />
+        <Button fx:id="newConfigCreateButton" layoutX="211.0" layoutY="463.0" mnemonicParsing="false" onAction="#createConfigurationOnAction" prefHeight="26.0" prefWidth="178.0" style="-fx-background-color: orange; -fx-border-color: black; -fx-background-radius: 100; -fx-border-radius: 100;" text="CREATE" />
+        <Label layoutX="100.0" layoutY="298.0" prefHeight="50.0" prefWidth="412.0" text="Chose the compiler path manually" textFill="#ffee00">
+            <font>
+                <Font name="Al Bayan Bold" size="24.0" />
+            </font>
+        </Label>
+        <Button fx:id="newConfigChooseButton" layoutX="465.0" layoutY="360.0" mnemonicParsing="false" onAction="#chooseNewConfig" prefHeight="42.0" prefWidth="74.0" style="-fx-background-color: orange; -fx-border-color: black; -fx-border-radius: 100; -fx-background-radius: 100;" text="CHOOSE" />
+    </children>
+</AnchorPane>

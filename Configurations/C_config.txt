@@ -1,0 +1,5 @@
+Language: C
+Compiler Path: gcc
+Compiler Parameters: -Wall -o
+Run Parameters: 
+Configuration Name: c
