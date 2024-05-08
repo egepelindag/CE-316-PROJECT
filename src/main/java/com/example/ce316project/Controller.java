@@ -91,6 +91,9 @@ public class Controller {
     @FXML
     private TextArea resultText;
 
+    private Button createProjectBackButton;
+
+
 
     static Project project= new Project();
     static Configuration configuration= new Configuration();
@@ -201,6 +204,18 @@ public class Controller {
         System.out.println("name: "+project.getProjectName());
     }
 
+    @FXML
+    public void createProjectBackButtonOnAction(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("welcomePage.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        // Mevcut pencerenin sahnesini değiştir
+        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        currentStage.setScene(scene);
+        currentStage.centerOnScreen();
+        currentStage.setResizable(false);
+
+    }
 
 
 

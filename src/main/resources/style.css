@@ -1,0 +1,23 @@
+/* Button hover animasyonu */
+.button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: black;
+    -fx-font-size: 11px;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s;
+
+}
+
+.button:hover {
+    -fx-background-color: #45a049;
+}
+
+.button:pressed {
+    -fx-background-color: #45a049;
+    -fx-background-radius: 5px;
+    -fx-scale-x: 0.9;
+    -fx-scale-y: 0.9;
+}

@@ -1,0 +1,4 @@
+Project Name: deneme
+Configuration Name: JAVA
+Main File: C:\Users\PC\IdeaProjects\deneme\src\main\resources\code_resource\proje.java
+Executable Name: C:\Users\PC\Desktop\deneme.txt
