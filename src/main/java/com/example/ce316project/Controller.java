@@ -16,6 +16,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Objects;
+
 import javafx.scene.control.MenuItem; // Import the correct MenuItem class
 
 
@@ -45,7 +47,7 @@ public class Controller {
     @FXML
     private TextField submissionDirectoryTextField;
     @FXML
-    private TextField expectectedOutpuFileDirectoryTextField;
+    private TextField expectedOutputFileDirectoryTextField;
     @FXML
     private Button newConfigButton;
     @FXML
@@ -84,6 +86,10 @@ public class Controller {
     private MenuItem openProjectMenuItem;
     @FXML
     private TextField projectNameTextField;
+    @FXML
+    private TextArea expectedOutputText;
+    @FXML
+    private TextArea resultText;
 
 
     static Project project= new Project();
@@ -119,7 +125,8 @@ public class Controller {
         configMenuButton.setText("JAVA");
         // Java için yapılandırma oluşturuluyor
         //bunlar burada olmayacak
-        configuration = Configuration.createConfiguration("Java", "Configurations\\jdk-18", "-g", "","java");
+        configuration = Configuration.createConfiguration("Java", "", "-g", "","java");
+
         configuration.saveConfiguration();
 
         project.setConfiguration(configuration);
@@ -132,11 +139,12 @@ public class Controller {
     public void cConfigMenuOnAction(ActionEvent event) {
         configMenuButton.setText("C");
         // C için yapılandırma oluşturuluyor
-        configuration = Configuration.createConfiguration("C", "gcc", "-Wall -o", "","c");
+        configuration = Configuration.createConfiguration("C", "", "-Wall -o", "","c");
         configuration.saveConfiguration();
 
         project.setConfiguration(configuration);
     }
+
 
     @FXML
     public void cSharpConfigOnAction(ActionEvent event) {
@@ -162,9 +170,33 @@ public class Controller {
     public void runButton(ActionEvent event) {
         Compiler compiler = new Compiler();
         System.out.println("fdsfasf "+project.getConfiguration().getCompilerPath());
-        //String output = compiler.runCProgram("C:\\Users\\ahmet\\Desktop\\c\\deneme","","");
-        String output = compiler.runJavaProgram(project.getSubmissionDirectoryPath(), "",project.getConfiguration().getCompilerPath());
-        submissionOutputText.setText(output);
+        String codeOutput="dsgdD";
+        System.out.println("output"+ codeOutput);
+        System.out.println(project.getConfiguration().getConfigurationName());
+        if (project.getConfiguration().getConfigurationName()=="JAVA"){
+            System.out.println("input "+projectInput.getText());
+            codeOutput = compiler.runJavaProgram(project.getSubmissionDirectoryPath(), projectInput.getText(),project.getConfiguration().getCompilerPath());
+
+            System.out.println("output: "+ codeOutput);
+            submissionOutputText.setText(codeOutput);
+        }else if (project.getConfiguration().getConfigurationName()=="C"){
+            codeOutput = compiler.runCProgram(project.getSubmissionDirectoryPath(), "",project.getConfiguration().getCompilerPath());
+            submissionOutputText.setText(codeOutput);
+        }
+
+
+
+        String expectedOutput=project.expectedOutput(project.getExpectedOutputPath());
+        expectedOutputText.setText(expectedOutput);
+
+        if (Objects.equals(codeOutput, expectedOutput)){
+            resultText.setText("Success!");
+
+        }else {
+            resultText.setText("Failed!");
+        }
+
+
 
         System.out.println("name: "+project.getProjectName());
     }
@@ -192,6 +224,7 @@ public class Controller {
         File selectedFile = fileChooser.showOpenDialog(stage);
         if (selectedFile != null) {
             submissionDirectoryTextField.setText(selectedFile.getAbsolutePath());
+            project.setExpectedOutputPath(selectedFile.getAbsolutePath());
         }
     }
 
@@ -202,7 +235,8 @@ public class Controller {
         Stage stage = (Stage) chooseExpectedOutpuButton.getScene().getWindow();
         File selectedFile = fileChooser.showOpenDialog(stage);
         if (selectedFile != null) {
-            expectectedOutpuFileDirectoryTextField.setText(selectedFile.getAbsolutePath());
+            expectedOutputFileDirectoryTextField.setText(selectedFile.getAbsolutePath());
+            project.setExpectedOutputPath(expectedOutputFileDirectoryTextField.getText());
         }
     }
 
@@ -211,7 +245,7 @@ public class Controller {
         String name = createProjectGetName.getText();
         String config = configMenuButton.getText();
         String submissionDirectoryPath=submissionDirectoryTextField.getText();
-        String expectedOutput = expectectedOutpuFileDirectoryTextField.getText();
+        String expectedOutput = expectedOutputFileDirectoryTextField.getText();
 
         project.setProjectName(name);
         project.getConfiguration().setConfigurationName(config);
@@ -235,7 +269,7 @@ public class Controller {
         }
         File projectFile = new File(directory, project.getProjectName() + ".txt");
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(projectFile))) {
-            writer.write("Config Name: " + project.getProjectName());
+            writer.write("Project Name: " + project.getProjectName());
             writer.newLine();
             writer.write("Configuration Name: " + project.getConfiguration().getConfigurationName());
             writer.newLine();

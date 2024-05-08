@@ -7,7 +7,7 @@ public class Compiler {
     public String runCProgram(String cFilePath, String input, String compilerPath) {
         StringBuilder output = new StringBuilder();
         try {
-            String compilerCommand = compilerPath + "gcc " + cFilePath + " -o program.exe";
+            String compilerCommand = compilerPath + "gcc " + cFilePath + " -o program.c";
             Process compileProcess = Runtime.getRuntime().exec(compilerCommand);
             compileProcess.waitFor();
 
@@ -16,7 +16,7 @@ public class Compiler {
                 return output.toString();
             }
 
-            Process runProcess = Runtime.getRuntime().exec("program.exe");
+            Process runProcess = Runtime.getRuntime().exec("program.c");
 
             if (input != null && !input.isEmpty()) {
                 try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(runProcess.getOutputStream()))) {

@@ -1,5 +1,8 @@
 package com.example.ce316project;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.Serializable;
 
 public class Project implements Serializable {
@@ -25,6 +28,21 @@ public class Project implements Serializable {
     // Yeni bir proje oluşturma
     public static Project createProject(String projectName, Configuration configuration, String submissionDirectoryPath, String expectedOutputPath) {
         return new Project(projectName, configuration, submissionDirectoryPath, expectedOutputPath);
+    }
+
+    public String expectedOutput(String dosyaYolu) {
+        StringBuilder content = new StringBuilder();
+
+        try (BufferedReader okuyucu = new BufferedReader(new FileReader(dosyaYolu))) {
+            String satir;
+            while ((satir = okuyucu.readLine()) != null) {
+                content.append(satir).append("\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return content.toString();
     }
 
     public String getProjectName() {

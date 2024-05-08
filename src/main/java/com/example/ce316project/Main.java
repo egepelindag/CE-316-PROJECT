@@ -49,24 +49,18 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        Configuration configuration=new Configuration();
-            launch();
+        launch();
+
 
     }
 
     public static void run(String file1){
-        //  String cFilePath = "C:\\Users\\ahmet\\Desktop\\c\\deneme\\main.c";
-        String java="C:\\Users\\ahmet\\Desktop\\proje\\proje.java";
-        String python="C:\\Users\\ahmet\\PycharmProjects\\pythonProject\\main.py";
 
-        String cFilePath;
         Scanner scan=new Scanner(System.in);
         System.out.println("enter path:");
-        cFilePath= scan.next();
-        // Bu fonksiyon, komut satırında C programını derleyip çalıştırmak için kullanılır
-        runCProgram(file1);
-        runJavaProgram(java);
-        runPythonProgram(python);
+        runJavaProgram(file1);
+
+
     }
 
     // C programını derleyip çalıştıran fonksiyon
