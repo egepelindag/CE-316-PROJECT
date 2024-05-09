@@ -1,0 +1,4 @@
+Project Name: u
+Configuration Name: JAVA
+Main File: C:\Users\ahmet\Desktop\CE-316-PROJECT-main\src\main\resources\code_resource\proje.java
+Expected Output File:C:\Users\ahmet\Desktop\output.txt

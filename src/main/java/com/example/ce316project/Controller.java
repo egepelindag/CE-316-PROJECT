@@ -12,10 +12,7 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Objects;
 
 import javafx.scene.control.MenuItem; // Import the correct MenuItem class
@@ -169,24 +166,45 @@ public class Controller {
         project.setConfiguration(configuration);
     }
 
+
+
     @FXML
-    public void runButton(ActionEvent event) {
+    public void runButton(ActionEvent event) throws IOException, InterruptedException {
         Compiler compiler = new Compiler();
-        System.out.println("fdsfasf "+project.getConfiguration().getCompilerPath());
+
+        
+        System.out.println("config name = " + project.getConfiguration().getConfigurationName());
         String codeOutput="dsgdD";
         System.out.println("output"+ codeOutput);
         System.out.println(project.getConfiguration().getConfigurationName());
-        if (project.getConfiguration().getConfigurationName()=="JAVA"){
-            System.out.println("input "+projectInput.getText());
-            codeOutput = compiler.runJavaProgram(project.getSubmissionDirectoryPath(), projectInput.getText(),project.getConfiguration().getCompilerPath());
+        if (Objects.equals(project.getConfiguration().getConfigurationName(), "JAVA")){
+            System.out.println("main file path: " + project.getSubmissionDirectoryPath());
 
-            System.out.println("output: "+ codeOutput);
-            submissionOutputText.setText(codeOutput);
-        }else if (project.getConfiguration().getConfigurationName()=="C"){
-            codeOutput = compiler.runCProgram(project.getSubmissionDirectoryPath(), "",project.getConfiguration().getCompilerPath());
+            System.out.println("input " + projectInput.getText());
+
+
+            String userInput = projectInput.getText();
+
+            codeOutput = compiler.runJavaProgram(project.getSubmissionDirectoryPath(), userInput);
+
+            System.out.println("output: " + codeOutput);
+
+            if (codeOutput != null) {
+                submissionOutputText.setText(codeOutput);
+            } else {
+                submissionOutputText.setText("Kod çıktısı alınamadı.");
+            }
+
+
+
+        }else if (Objects.equals(project.getConfiguration().getConfigurationName(), "C")){
+            System.out.println("C code running");
+            System.out.println("input: "+projectInput.getText());
+            String CInput = projectInput.getText();
+            codeOutput = compiler.runCProgram(project.getSubmissionDirectoryPath(), CInput);
+            System.out.println("output: "+codeOutput);
             submissionOutputText.setText(codeOutput);
         }
-
 
 
         String expectedOutput=project.expectedOutput(project.getExpectedOutputPath());
@@ -198,11 +216,10 @@ public class Controller {
         }else {
             resultText.setText("Failed!");
         }
-
-
-
         System.out.println("name: "+project.getProjectName());
     }
+
+
 
     @FXML
     public void createProjectBackButtonOnAction(ActionEvent event) throws IOException {
@@ -290,7 +307,7 @@ public class Controller {
             writer.newLine();
             writer.write("Main File: " + project.getSubmissionDirectoryPath());
             writer.newLine();
-            writer.write("Executable Name: " + project.getExpectedOutputPath());
+            writer.write("Expected Output File:" + project.getExpectedOutputPath());
             writer.newLine();
         } catch (IOException e) {
             e.printStackTrace();
@@ -357,6 +374,7 @@ public class Controller {
 
     @FXML
     public void welcomeOpenProjectButton(ActionEvent event) throws IOException {
+        Project openProject=new Project();
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose File");
         Stage stage = (Stage) welcomeOpenProjectButton.getScene().getWindow();
@@ -364,6 +382,53 @@ public class Controller {
         if (selectedFile != null) {
             System.out.println("Seçilen dosya: " + selectedFile.getAbsolutePath());
         }
+
+        String projectName = "";
+        Configuration configuration = new Configuration();
+        String mainFilePath = "";
+        String expectedOutput = "";
+
+        try (BufferedReader okuyucu = new BufferedReader(new FileReader(selectedFile.getAbsolutePath()))) {
+            String satir;
+            while ((satir = okuyucu.readLine()) != null) {
+                if (satir.startsWith("Project Name:")) {
+                    projectName = satir.substring(satir.indexOf(":") + 1).trim();
+                    openProject.setProjectName(projectName);
+                } else if (satir.startsWith("Configuration Name:")) {
+                    configuration.setConfigurationName(satir.substring(satir.indexOf(":") + 1).trim());
+                    openProject.setConfiguration(configuration);
+                    openProject.getConfiguration().setConfigurationName(configuration.getConfigurationName());
+                } else if (satir.startsWith("Main File:")) {
+                    mainFilePath = satir.substring(satir.indexOf(":") + 1).trim();
+                    openProject.setSubmissionDirectoryPath(mainFilePath);
+                } else if (satir.startsWith("Expected Output File")) {
+                    expectedOutput = satir.substring(satir.indexOf(":") + 1).trim();
+                    openProject.setExpectedOutputPath(expectedOutput);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        project=openProject;
+
+        System.out.println("name : " + projectName);
+        System.out.println("Configuration : " + project.getConfiguration().getConfigurationName());
+        System.out.println("mainFilePath : " + project.getSubmissionDirectoryPath());
+        System.out.println("expectedOutput : " + project.getExpectedOutputPath());
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
+        Parent root = loader.load();
+
+// FXML dosyası yüklendikten sonra projectNameTextField'e değer atayın
+        TextField projectNameTextField = (TextField) loader.getNamespace().get("projectNameTextField");
+        projectNameTextField.setText(projectName);
+
+        Scene scene = new Scene(root);
+        Stage newStage = new Stage();
+        newStage.setResizable(false);
+        newStage.setScene(scene);
+        newStage.show();
+
     }
 
     @FXML
@@ -392,6 +457,7 @@ public class Controller {
         } else {
             System.out.println("No file selected.");
         }
+        project.openProject(selectedFile.getAbsolutePath());
     }
 
 
@@ -408,19 +474,6 @@ public class Controller {
         currentStage.setResizable(false);
 
     }
-
-    @FXML
-    public void openProjectMainPage(ActionEvent event) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Choose File");
-        Stage stage = (Stage) importConfigurationButton.getScene().getWindow();
-        File selectedFile = fileChooser.showOpenDialog(stage);
-        if (selectedFile != null) {
-            System.out.println("Seçilen dosya: " + selectedFile.getAbsolutePath());
-        }
-
-    }
-
 
 
     //createConfigButton

@@ -1,27 +1,47 @@
 #include <stdio.h>
-
-void printAge(int *pAge)
-{
-   printf("You are %d years old\n", *pAge); //dereference
-}
+#include <stdlib.h>
+#include <math.h>
 
 int main()
 {
-   // pointer = a "variable-like" reference that holds a memory address to another variable, array, etc.
-   //           some tasks are performed more easily with pointers
-   //           * = indirection operator (value at address)
+    int vize1;
+    int vize2;
+    int Final;
+    float okulortalama;
+    double dersort;
+    int islem;
+    int bakiye = 1000;
+    int tutar;
 
-   int age = 21;
-   int *pAge = &age;
+    printf("vize1 : ");
+    scanf("%d",&vize1);
+    printf("%d\n",vize1);
 
-   //printAge(pAge);
-   
-   printf("address of age: %p\n", &age);
-   printf("value of pAge: %p\n", &pAge);
-   printf("size of age: %d bytes\n", sizeof(age));
-   printf("size of pAge: %d bytes\n", sizeof(pAge));
-   printf("value of age: %d\n", age);
-   printf("value at stored address: %d\n", *pAge); //dereferencing
+    printf("vize2 : ");
+    scanf("%d",&vize2);
+    printf("%d\n",vize2);
 
-   return 0;
+    printf("Final : ");
+    scanf("%d",&Final);
+    printf("%d\n",Final);
+
+    dersort = (vize1 + vize2 + Final) / 3.0;
+
+    if(dersort >=60) {
+        printf("Dersten gectiniz...\n");
+    }
+    else if(dersort >50 && dersort<60) {
+            printf("Bute girebilirsiniz...\n");
+
+    }
+    else {
+        printf("Dersten gecemediniz...\n\n\n\n");
+    }
+
+
+
+
+
+
+
 }

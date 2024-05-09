@@ -1,0 +1,5 @@
+Language: C#
+Compiler Path: csc
+Compiler Parameters: -out:
+Run Parameters: mono
+Configuration Name: c#

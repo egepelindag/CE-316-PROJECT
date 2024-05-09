@@ -1,0 +1,4 @@
+Project Name: t
+Configuration Name: C
+Main File: C:\Users\ahmet\Desktop\CE-316-PROJECT-main\src\main\resources\code_resource\main.c
+Expected Output File:C:\Users\ahmet\Desktop\output.txt

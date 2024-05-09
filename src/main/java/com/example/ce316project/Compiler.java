@@ -1,45 +1,72 @@
 package com.example.ce316project;
 
 import java.io.*;
+import java.util.Scanner;
 
 public class Compiler {
     // C programını derleyip çalıştıran fonksiyon
-    public String runCProgram(String cFilePath, String input, String compilerPath) {
+    public String runCProgram(String cFilePath, String input) {
         StringBuilder output = new StringBuilder();
         try {
-            String compilerCommand = compilerPath + "gcc " + cFilePath + " -o program.c";
-            Process compileProcess = Runtime.getRuntime().exec(compilerCommand);
+            // C programını derle
+            String compileCommand = "gcc " + cFilePath + " -o program";
+            Process compileProcess = Runtime.getRuntime().exec(compileCommand);
             compileProcess.waitFor();
 
+            // Derleme sırasında hata varsa
             if (compileProcess.exitValue() != 0) {
-                output.append("C programı derlenirken hata oluştu.");
+                output.append("Can not run the program.\n");
                 return output.toString();
             }
 
-            Process runProcess = Runtime.getRuntime().exec("program.c");
+            // Çalışma işlemini başlat
+            Process runProcess = Runtime.getRuntime().exec("./program", null, new File(cFilePath).getParentFile());
 
+            // Input verisi varsa, işleme gönder
             if (input != null && !input.isEmpty()) {
                 try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(runProcess.getOutputStream()))) {
                     writer.write(input);
+                    writer.flush(); // input gönderimi için buffer'ı boşalt
                 }
+            } else {
+                output.append("Enter input!\n"); // input boş olduğunda hata olarak işaretle
+                return output.toString();
             }
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(runProcess.getInputStream()));
+            BufferedReader errorReader = new BufferedReader(new InputStreamReader(runProcess.getErrorStream())); // standart hata çıktısını oku
+
+            // Standart çıktı
             String line;
             while ((line = reader.readLine()) != null) {
                 output.append(line).append("\n");
+            }
+
+            // Standart hata çıktısı
+            while ((line = errorReader.readLine()) != null) {
+                output.append("Error ").append(line).append("\n");
             }
 
             runProcess.waitFor();
 
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
-            output.append("Error occurred: ").append(e.getMessage());
+            output.append("Error ").append(e.getMessage()).append("\n");
         }
         return output.toString();
     }
 
-    public String runJavaProgram(String javaFile, String input, String compilerPath) {
+
+
+
+
+
+
+    public String runJavaProgram(String javaFile, String input) {
+
+        if (input == null || input.isEmpty()) {
+            input=" ";
+        }
         StringBuilder output = new StringBuilder();
         try {
             // Java dosyasının dizinini ve adını ayır
@@ -47,20 +74,38 @@ public class Compiler {
             String parentDir = javaFilePath.getParent();
             String javaFileName = javaFilePath.getName().replace(".java", "");
 
-            // Komut oluşturma
-            String command = "java -cp \"" + parentDir + "\" " + javaFileName;
-            if (compilerPath != null && !compilerPath.isEmpty()) {
-                command = compilerPath + File.separator + "bin" + File.separator + command;
+            // .java dosyasını derle
+            String compileCommand = "javac \"" + javaFile + "\"";
+            Process compileProcess = Runtime.getRuntime().exec(compileCommand);
+            compileProcess.waitFor();
+
+            // Derleme sırasında hata varsa
+            BufferedReader compileErrorReader = new BufferedReader(new InputStreamReader(compileProcess.getErrorStream()));
+            String compileErrorLine;
+            while ((compileErrorLine = compileErrorReader.readLine()) != null) {
+                output.append(compileErrorLine).append("\n");
+            }
+            compileErrorReader.close();
+
+            // Derleme hatası varsa çık
+            if (output.length() > 0) {
+                return output.toString();
             }
 
+            // Komut oluşturma
+            String command = "java " + javaFileName;
+
             // Çalışma işlemini başlat
-            Process runProcess = Runtime.getRuntime().exec(command);
+            Process runProcess = Runtime.getRuntime().exec(command, null, new File(parentDir));
 
             // Input verisi varsa, işleme gönder
             if (input != null && !input.isEmpty()) {
                 try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(runProcess.getOutputStream()))) {
                     writer.write(input);
                 }
+            } else {
+                // Eğer input boşsa, programı normal çalıştırın, ancak uyarı verin
+                output.append("Enter input!");
             }
 
             // Hata çıktısını oku
@@ -86,6 +131,10 @@ public class Compiler {
         }
         return output.toString();
     }
+
+
+
+
 
 
     public String runPythonProgram(String pyFile, String input, String compilerPath) {

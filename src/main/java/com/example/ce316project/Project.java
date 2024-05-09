@@ -30,6 +30,36 @@ public class Project implements Serializable {
         return new Project(projectName, configuration, submissionDirectoryPath, expectedOutputPath);
     }
 
+
+    public Project openProject(String dosyaYolu) {
+        String projectName = "";
+        Configuration configuration = new Configuration();
+        String mainFilePath = "";
+        String executableName = "";
+
+        try (BufferedReader okuyucu = new BufferedReader(new FileReader(dosyaYolu))) {
+            String satir;
+            while ((satir = okuyucu.readLine()) != null) {
+                if (satir.startsWith("Project Name:")) {
+                    projectName = satir.substring(satir.indexOf(":") + 1).trim();
+                } else if (satir.startsWith("Configuration Name:")) {
+                    configuration.setConfigurationName(satir.substring(satir.indexOf(":") + 1).trim());
+                } else if (satir.startsWith("Main File:")) {
+                    mainFilePath = satir.substring(satir.indexOf(":") + 1).trim();
+                } else if (satir.startsWith("Executable Name:")) {
+                    executableName = satir.substring(satir.indexOf(":") + 1).trim();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Dosya yollarını kullanarak projeyi oluştur
+        Project project = new Project(projectName, configuration, mainFilePath, executableName);
+
+        return project;
+    }
+
     public String expectedOutput(String dosyaYolu) {
         StringBuilder content = new StringBuilder();
 
