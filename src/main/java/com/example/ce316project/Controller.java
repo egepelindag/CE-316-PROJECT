@@ -91,6 +91,9 @@ public class Controller {
     private TextArea resultText;
     @FXML
     private TextField studentNameTextField;
+    
+    @FXML
+    private Button welcomeHelpButton;
 
     private Button createProjectBackButton;
 
@@ -122,8 +125,7 @@ public class Controller {
 
 
 
-    //bunların hepsi newProject.fxml dosyasının
-    //Configuration secme
+
     @FXML
     public void javaConfigOnAction(ActionEvent event) {
         configMenuButton.setText("JAVA");
@@ -419,6 +421,20 @@ public class Controller {
 
 
 
+
+    @FXML
+    public void welcomeHelpButton(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("help.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        // Mevcut pencerenin sahnesini değiştir
+        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        currentStage.setScene(scene);
+        currentStage.centerOnScreen();
+        currentStage.setResizable(false);
+
+    }
+
     @FXML
     public void welcomeNewProjectButton(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("newProject.fxml"));
@@ -542,21 +558,21 @@ public class Controller {
     public void createConfigurationOnAction(ActionEvent event) {
         String configName = newConfigName.getText();
         String configParameters = newConfigParameters.getText();
-        String configMainFile = newConfigMainFile.getText();
+       // String configMainFile = newConfigMainFile.getText();
         String configExeName = newConfigExeName.getText();
         String configPath = newConfigPath.getText();
         File directory = new File("Configurations");
         if (!directory.exists()) {
             directory.mkdirs();
         }
-        File configFile = new File(directory, configName + ".txt");
+        File configFile = new File(directory, configName + "_config.txt");
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(configFile))) {
             writer.write("Config Name: " + configName);
             writer.newLine();
             writer.write("Parameters: " + configParameters);
             writer.newLine();
-            writer.write("Main File: " + configMainFile);
-            writer.newLine();
+           /* writer.write("Main File: " + configMainFile);
+            writer.newLine();*/
             writer.write("Executable Name: " + configExeName);
             writer.newLine();
             writer.write("Path: " + configPath);

@@ -1,5 +1,4 @@
 Language: Java
-Compiler Path: Configurations\jdk-18
 Compiler Parameters: -g
 Run Parameters: 
 Configuration Name: java
