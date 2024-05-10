@@ -13,6 +13,8 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Objects;
 
 import javafx.scene.control.MenuItem; // Import the correct MenuItem class
@@ -87,6 +89,8 @@ public class Controller {
     private TextArea expectedOutputText;
     @FXML
     private TextArea resultText;
+    @FXML
+    private TextField studentNameTextField;
 
     private Button createProjectBackButton;
 
@@ -174,10 +178,13 @@ public class Controller {
 
         
         System.out.println("config name = " + project.getConfiguration().getConfigurationName());
-        String codeOutput="dsgdD";
-        System.out.println("output"+ codeOutput);
+        String codeOutput="";
+        String language="";
         System.out.println(project.getConfiguration().getConfigurationName());
+
+
         if (Objects.equals(project.getConfiguration().getConfigurationName(), "JAVA")){
+            language="JAVA";
             System.out.println("main file path: " + project.getSubmissionDirectoryPath());
 
             System.out.println("input " + projectInput.getText());
@@ -192,12 +199,12 @@ public class Controller {
             if (codeOutput != null) {
                 submissionOutputText.setText(codeOutput);
             } else {
-                submissionOutputText.setText("Kod çıktısı alınamadı.");
+                submissionOutputText.setText("Error!");
             }
 
 
-
         }else if (Objects.equals(project.getConfiguration().getConfigurationName(), "C")){
+            language="C";
             System.out.println("C code running");
             System.out.println("input: "+projectInput.getText());
             String CInput = projectInput.getText();
@@ -210,13 +217,54 @@ public class Controller {
         String expectedOutput=project.expectedOutput(project.getExpectedOutputPath());
         expectedOutputText.setText(expectedOutput);
 
-        if (Objects.equals(codeOutput, expectedOutput)){
-            resultText.setText("Success!");
-
-        }else {
-            resultText.setText("Failed!");
+        String result;
+        if (Objects.equals(codeOutput, expectedOutput)) {
+            result = "Success!";
+        } else {
+            result = "Failed!";
         }
-        System.out.println("name: "+project.getProjectName());
+
+        resultText.setText(result);
+
+        String projectPath = project.getProjectName() + "_" + language;
+        String path = "Projects/" + projectPath + ".txt"; // Dosyanın yolunu buraya girin
+        System.out.println("path: " + path);
+
+        try {
+            // Dosyanın var olup olmadığını kontrol et
+            File file = new File(path);
+            if (!file.exists()) {
+                System.out.println("File not found: " + path);
+                return;
+            }
+
+            // Dosyanın içeriğini kontrol et
+            String content = new String(Files.readAllBytes(Paths.get(path)));
+            if (content.contains("Result:")) {
+                // Mevcut "Result" satırını güncelle
+                content = content.replaceAll("Result:.*", "Result: " + result);
+            } else {
+                // Dosyaya yeni sonucu ekle
+                content += "\nResult: " + result;
+            }
+
+            Files.write(Paths.get(path), content.getBytes());
+            System.out.println("Result updated/appended in file.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Dosyanın var olduğunu ve içeriğin eklenip eklenmediğini kontrol et
+        if (Files.exists(Paths.get(path))) {
+            try {
+                String content = new String(Files.readAllBytes(Paths.get(path)));
+                System.out.println("File content: \n" + content);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("File not found: " + path);
+        }
     }
 
 
@@ -244,7 +292,7 @@ public class Controller {
         Stage stage = (Stage) importConfigurationButton.getScene().getWindow();
         File selectedFile = fileChooser.showOpenDialog(stage);
         if (selectedFile != null) {
-            System.out.println("Seçilen dosya: " + selectedFile.getAbsolutePath());
+            System.out.println("File: " + selectedFile.getAbsolutePath());
         }
     }
 
@@ -254,7 +302,7 @@ public class Controller {
         fileChooser.setTitle("Choose File");
         Stage stage = (Stage) chooseExpectedOutpuButton.getScene().getWindow();
         File selectedFile = fileChooser.showOpenDialog(stage);
-        if (selectedFile != null) {
+        if (selectedFile != null) { 
             submissionDirectoryTextField.setText(selectedFile.getAbsolutePath());
             project.setExpectedOutputPath(selectedFile.getAbsolutePath());
         }
@@ -279,10 +327,14 @@ public class Controller {
         String submissionDirectoryPath=submissionDirectoryTextField.getText();
         String expectedOutput = expectedOutputFileDirectoryTextField.getText();
 
+
+
         project.setProjectName(name);
         project.getConfiguration().setConfigurationName(config);
         project.setSubmissionDirectoryPath(submissionDirectoryPath);
         project.setExpectedOutputPath(expectedOutput);
+        //project.setStudent(student);
+        //project.getStudent().setSubmissionPath(project.getSubmissionDirectoryPath());
 
 
         System.out.println(project.getProjectName());
@@ -295,13 +347,16 @@ public class Controller {
             //popup
             System.out.println("NULL");
         }
+
         File directory = new File("Projects");
         if (!directory.exists()) {
             directory.mkdirs();
         }
-        File projectFile = new File(directory, project.getProjectName() + ".txt");
+
+
+        File projectFile = new File(directory, project.getProjectName()+"_"+project.getConfiguration().getConfigurationName() + ".txt");
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(projectFile))) {
-            writer.write("Project Name: " + project.getProjectName());
+            writer.write("Student ID: " + project.getProjectName());
             writer.newLine();
             writer.write("Configuration Name: " + project.getConfiguration().getConfigurationName());
             writer.newLine();
@@ -322,7 +377,11 @@ public class Controller {
 
 // FXML dosyası yüklendikten sonra projectNameTextField'e değer atayın
         TextField projectNameTextField = (TextField) loader.getNamespace().get("projectNameTextField");
-        projectNameTextField.setText(projectName);
+        projectNameTextField.setText("Student ID: "+projectName);
+
+
+    //    studentNameTextField.setText("student");
+
 
         Scene scene = new Scene(root);
         Stage newStage = new Stage();
@@ -331,6 +390,7 @@ public class Controller {
         newStage.show();
 
 
+        System.out.println("dosya: "+projectFile.getParent());
     }
 
     @FXML
@@ -380,7 +440,7 @@ public class Controller {
         Stage stage = (Stage) welcomeOpenProjectButton.getScene().getWindow();
         File selectedFile = fileChooser.showOpenDialog(stage);
         if (selectedFile != null) {
-            System.out.println("Seçilen dosya: " + selectedFile.getAbsolutePath());
+            System.out.println("File: " + selectedFile.getAbsolutePath());
         }
 
         String projectName = "";
@@ -388,16 +448,17 @@ public class Controller {
         String mainFilePath = "";
         String expectedOutput = "";
 
+
         try (BufferedReader okuyucu = new BufferedReader(new FileReader(selectedFile.getAbsolutePath()))) {
             String satir;
             while ((satir = okuyucu.readLine()) != null) {
-                if (satir.startsWith("Project Name:")) {
+                if (satir.startsWith("Student ID:")) {
                     projectName = satir.substring(satir.indexOf(":") + 1).trim();
                     openProject.setProjectName(projectName);
                 } else if (satir.startsWith("Configuration Name:")) {
                     configuration.setConfigurationName(satir.substring(satir.indexOf(":") + 1).trim());
+                    //openProject.getConfiguration().setConfigurationName(configuration.getConfigurationName());
                     openProject.setConfiguration(configuration);
-                    openProject.getConfiguration().setConfigurationName(configuration.getConfigurationName());
                 } else if (satir.startsWith("Main File:")) {
                     mainFilePath = satir.substring(satir.indexOf(":") + 1).trim();
                     openProject.setSubmissionDirectoryPath(mainFilePath);
@@ -438,7 +499,7 @@ public class Controller {
         Stage stage = (Stage) welcomeConfigButton.getScene().getWindow();
         File selectedFile = fileChooser.showOpenDialog(stage);
         if (selectedFile != null) {
-            System.out.println("Seçilen dosya: " + selectedFile.getAbsolutePath());
+            System.out.println("File: " + selectedFile.getAbsolutePath());
         }
     }
 

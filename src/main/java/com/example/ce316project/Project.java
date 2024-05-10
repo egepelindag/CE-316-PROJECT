@@ -106,4 +106,5 @@ public class Project implements Serializable {
     public void setSubmissionDirectoryPath(String submissionDirectoryPath) {
         this.submissionDirectoryPath = submissionDirectoryPath;
     }
+
 }

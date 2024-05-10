@@ -1,5 +1,8 @@
+//
+
 import java.util.Scanner;
 
+//2232223
 public class proje{
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

@@ -10,22 +10,20 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="610.0" style="-fx-background-color: darkcyan;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ce316project.Controller">
     <children>
         <TextField fx:id="createProjectGetName" layoutX="51.0" layoutY="53.0" prefHeight="58.0" prefWidth="499.0" />
-        <Text fill="#d35555" layoutX="51.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Project Name" wrappingWidth="86.7400016784668" />
+        <Text fill="#d35555" layoutX="51.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student ID :" wrappingWidth="86.7400016784668" />
         <MenuButton fx:id="configMenuButton" layoutX="51.0" layoutY="135.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="261.0" style="-fx-border-radius: 2000000;" text="Configuration">
             <items>
                 <MenuItem fx:id="javaConfigMenuItem" mnemonicParsing="false" onAction="#javaConfigOnAction" text="JAVA configuration" />
                 <MenuItem fx:id="cConfigMenuItem" mnemonicParsing="false" onAction="#cConfigMenuOnAction" text="C configuration" />
-                <MenuItem fx:id="cSharpConfigMenuItem" mnemonicParsing="false" onAction="#cSharpConfigOnAction" text="C# configuration" />
-                <MenuItem fx:id="pythonConfigMenuItem" mnemonicParsing="false" onAction="#pythonConfigOnAction" text="Python configuration" />
             </items>
         </MenuButton>
-        <Button fx:id="importConfigurationButton" layoutX="501.0" layoutY="136.0" mnemonicParsing="false" onAction="#importConfigButton" prefHeight="44.0" prefWidth="87.0" style="-fx-background-color: orange; -fx-background-radius: 400;" stylesheets="@../../../style.css" text="Import" />
+        <Button fx:id="importConfigurationButton" layoutX="501.0" layoutY="136.0" mnemonicParsing="false" onAction="#importConfigButton" prefHeight="44.0" prefWidth="87.0" style="-fx-background-radius: 400;" stylesheets="@../../../style.css" text="Import" />
         <TextField fx:id="submissionDirectoryTextField" layoutX="51.0" layoutY="200.0" prefHeight="58.0" prefWidth="431.0" promptText="Submissions Directory" />
-        <Button fx:id="chooseSubmissionButton" layoutX="502.0" layoutY="207.0" mnemonicParsing="false" onAction="#submissionDirectoryChooseButton" prefHeight="44.0" prefWidth="87.0" style="-fx-background-color: orange; -fx-background-radius: 400;" stylesheets="@../../../style.css" text="Choose" />
+        <Button fx:id="chooseSubmissionButton" layoutX="502.0" layoutY="207.0" mnemonicParsing="false" onAction="#submissionDirectoryChooseButton" prefHeight="44.0" prefWidth="87.0" style="-fx-background-radius: 400;" stylesheets="@../../../style.css" text="Choose" />
         <TextField fx:id="expectedOutputFileDirectoryTextField" layoutX="51.0" layoutY="287.0" prefHeight="58.0" prefWidth="431.0" promptText="Expected Output File" />
-        <Button fx:id="chooseExpectedOutpuButton" layoutX="502.0" layoutY="294.0" mnemonicParsing="false" onAction="#expectecOutputDirectoryChooseButton" prefHeight="44.0" prefWidth="87.0" style="-fx-background-color: orange; -fx-background-radius: 400;" stylesheets="@../../../style.css" text="Choose" />
-        <Button fx:id="createProjectButton" layoutX="238.0" layoutY="358.0" mnemonicParsing="false" onAction="#createProjectOnAction" prefHeight="44.0" prefWidth="126.0" style="-fx-background-color: orange; -fx-background-radius: 400;" stylesheets="@../../../style.css" text="CREATE" />
-        <Button fx:id="newConfigButton" layoutX="331.0" layoutY="135.0" mnemonicParsing="false" onAction="#addNewConfigOnAction" prefHeight="44.0" prefWidth="150.0" style="-fx-background-color: orange; -fx-background-radius: 400;" stylesheets="@../../../style.css" text="New Configuration" />
-      <Button fx:id="createProjectBackButton" layoutX="51.0" layoutY="358.0" mnemonicParsing="false" onAction="#createProjectBackButtonOnAction" prefHeight="44.0" prefWidth="126.0" style="-fx-background-color: orange; -fx-background-radius: 400;" stylesheets="@../../../style.css" text="BACK" />
+        <Button fx:id="chooseExpectedOutpuButton" layoutX="502.0" layoutY="294.0" mnemonicParsing="false" onAction="#expectecOutputDirectoryChooseButton" prefHeight="44.0" prefWidth="87.0" style="-fx-background-radius: 400;" stylesheets="@../../../style.css" text="Choose" />
+        <Button fx:id="createProjectButton" layoutX="238.0" layoutY="358.0" mnemonicParsing="false" onAction="#createProjectOnAction" prefHeight="44.0" prefWidth="126.0" style="-fx-background-radius: 400;" stylesheets="@../../../style.css" text="CREATE" />
+        <Button fx:id="newConfigButton" layoutX="331.0" layoutY="135.0" mnemonicParsing="false" onAction="#addNewConfigOnAction" prefHeight="44.0" prefWidth="150.0" style="-fx-background-radius: 400;" stylesheets="@../../../style.css" text="New Configuration" />
+      <Button fx:id="createProjectBackButton" layoutX="51.0" layoutY="358.0" mnemonicParsing="false" onAction="#createProjectBackButtonOnAction" prefHeight="44.0" prefWidth="126.0" style="-fx-background-radius: 400;" stylesheets="@../../../style.css" text="BACK" />
     </children>
 </AnchorPane>
