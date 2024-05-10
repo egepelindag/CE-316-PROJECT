@@ -1,4 +1,0 @@
-Project Name: v
-Configuration Name: JAVA
-Main File: C:\Users\ahmet\Desktop\proje\proje.java
-Executable Name: C:\Users\ahmet\Desktop\output.txt
