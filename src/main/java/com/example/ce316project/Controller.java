@@ -17,12 +17,12 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Objects;
 
-import javafx.scene.control.MenuItem; // Import the correct MenuItem class
+import javafx.scene.control.MenuItem;
 
 
 public class Controller {
     @FXML
-    private MenuItem newProjectMenuItem; // Check if this should be a MenuItem or another control type
+    private MenuItem newProjectMenuItem;
     @FXML
     private TextArea projectInput;
     @FXML
@@ -107,7 +107,7 @@ public class Controller {
         Platform.exit();
     }
 
-    //yeni proje açma kısmı
+
     @FXML
     public void newProjectButton(ActionEvent event) {
         try {
@@ -129,8 +129,6 @@ public class Controller {
     @FXML
     public void javaConfigOnAction(ActionEvent event) {
         configMenuButton.setText("JAVA");
-        // Java için yapılandırma oluşturuluyor
-        //bunlar burada olmayacak
         configuration = Configuration.createConfiguration("Java", "", "-g", "","java");
 
         configuration.saveConfiguration();
@@ -138,13 +136,11 @@ public class Controller {
         project.setConfiguration(configuration);
 
         System.out.println(project.getConfiguration().getCompilerPath());
-
     }
 
     @FXML
     public void cConfigMenuOnAction(ActionEvent event) {
         configMenuButton.setText("C");
-        // C için yapılandırma oluşturuluyor
         configuration = Configuration.createConfiguration("C", "", "-Wall -o", "","c");
         configuration.saveConfiguration();
 
@@ -155,7 +151,6 @@ public class Controller {
     @FXML
     public void cSharpConfigOnAction(ActionEvent event) {
         configMenuButton.setText("C#");
-        // C# için yapılandırma oluşturuluyor
         configuration = Configuration.createConfiguration("C#", "csc", "-out:", "mono","c#");
         configuration.saveConfiguration();
 
@@ -165,7 +160,6 @@ public class Controller {
     @FXML
     public void pythonConfigOnAction(ActionEvent event) {
         configMenuButton.setText("Python");
-        // Python için yapılandırma oluşturuluyor
         configuration = Configuration.createConfiguration("Python", "python", "", "python","python");
         configuration.saveConfiguration();
 
@@ -229,24 +223,24 @@ public class Controller {
         resultText.setText(result);
 
         String projectPath = project.getProjectName() + "_" + language;
-        String path = "Projects/" + projectPath + ".txt"; // Dosyanın yolunu buraya girin
+        String path = "Projects/" + projectPath + ".txt";
         System.out.println("path: " + path);
 
         try {
-            // Dosyanın var olup olmadığını kontrol et
+
             File file = new File(path);
             if (!file.exists()) {
                 System.out.println("File not found: " + path);
                 return;
             }
 
-            // Dosyanın içeriğini kontrol et
+
             String content = new String(Files.readAllBytes(Paths.get(path)));
             if (content.contains("Result:")) {
-                // Mevcut "Result" satırını güncelle
+
                 content = content.replaceAll("Result:.*", "Result: " + result);
             } else {
-                // Dosyaya yeni sonucu ekle
+
                 content += "\nResult: " + result;
             }
 
@@ -256,7 +250,7 @@ public class Controller {
             e.printStackTrace();
         }
 
-        // Dosyanın var olduğunu ve içeriğin eklenip eklenmediğini kontrol et
+
         if (Files.exists(Paths.get(path))) {
             try {
                 String content = new String(Files.readAllBytes(Paths.get(path)));
@@ -276,7 +270,7 @@ public class Controller {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("welcomePage.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        // Mevcut pencerenin sahnesini değiştir
+
         Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(scene);
         currentStage.centerOnScreen();
@@ -286,7 +280,7 @@ public class Controller {
 
 
 
-    //ödev yükleme, ödev seçme
+
     @FXML
     public void importConfigButton(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
@@ -335,8 +329,7 @@ public class Controller {
         project.getConfiguration().setConfigurationName(config);
         project.setSubmissionDirectoryPath(submissionDirectoryPath);
         project.setExpectedOutputPath(expectedOutput);
-        //project.setStudent(student);
-        //project.getStudent().setSubmissionPath(project.getSubmissionDirectoryPath());
+
 
 
         System.out.println(project.getProjectName());
@@ -346,7 +339,7 @@ public class Controller {
             System.out.println(project.getExpectedOutputPath());
         }
         else{
-            //popup
+
             System.out.println("NULL");
         }
 
@@ -373,16 +366,14 @@ public class Controller {
         System.out.println(project.getProjectName());
         String projectName = project.getProjectName();
 
-// FXML dosyasını yüklemeden önce projectNameTextField'e değer atayın
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
         Parent root = loader.load();
 
-// FXML dosyası yüklendikten sonra projectNameTextField'e değer atayın
+
         TextField projectNameTextField = (TextField) loader.getNamespace().get("projectNameTextField");
         projectNameTextField.setText("Student ID: "+projectName);
 
-
-    //    studentNameTextField.setText("student");
 
 
         Scene scene = new Scene(root);
@@ -417,8 +408,6 @@ public class Controller {
         }
     }
 
-    //newProject.fxml kısmı bitiş
-
 
 
 
@@ -427,7 +416,7 @@ public class Controller {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("help.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        // Mevcut pencerenin sahnesini değiştir
+
         Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(scene);
         currentStage.centerOnScreen();
@@ -440,7 +429,7 @@ public class Controller {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("newProject.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        // Mevcut pencerenin sahnesini değiştir
+
         Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(scene);
         currentStage.centerOnScreen();
@@ -473,7 +462,6 @@ public class Controller {
                     openProject.setProjectName(projectName);
                 } else if (satir.startsWith("Configuration Name:")) {
                     configuration.setConfigurationName(satir.substring(satir.indexOf(":") + 1).trim());
-                    //openProject.getConfiguration().setConfigurationName(configuration.getConfigurationName());
                     openProject.setConfiguration(configuration);
                 } else if (satir.startsWith("Main File:")) {
                     mainFilePath = satir.substring(satir.indexOf(":") + 1).trim();
@@ -496,7 +484,7 @@ public class Controller {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
         Parent root = loader.load();
 
-// FXML dosyası yüklendikten sonra projectNameTextField'e değer atayın
+
         TextField projectNameTextField = (TextField) loader.getNamespace().get("projectNameTextField");
         projectNameTextField.setText(projectName);
 
@@ -521,8 +509,6 @@ public class Controller {
 
 
 
-    //welcome page sonu
-    //yeni proje açma kısmı
 
     @FXML
     public void mainPageOpenProject(ActionEvent event) {
@@ -544,7 +530,6 @@ public class Controller {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("welcomePage.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        // Mevcut pencerenin sahnesini değiştir
         Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(scene);
         currentStage.centerOnScreen();
@@ -553,12 +538,12 @@ public class Controller {
     }
 
 
-    //createConfigButton
+
     @FXML
     public void createConfigurationOnAction(ActionEvent event) {
         String configName = newConfigName.getText();
         String configParameters = newConfigParameters.getText();
-       // String configMainFile = newConfigMainFile.getText();
+        //String configMainFile = newConfigMainFile.getText();
         String configExeName = newConfigExeName.getText();
         String configPath = newConfigPath.getText();
         File directory = new File("Configurations");
@@ -571,8 +556,6 @@ public class Controller {
             writer.newLine();
             writer.write("Parameters: " + configParameters);
             writer.newLine();
-           /* writer.write("Main File: " + configMainFile);
-            writer.newLine();*/
             writer.write("Executable Name: " + configExeName);
             writer.newLine();
             writer.write("Path: " + configPath);

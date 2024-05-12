@@ -25,7 +25,6 @@ public class Project implements Serializable {
         this.expectedOutputPath = "";
     }
 
-    // Yeni bir proje oluşturma
     public static Project createProject(String projectName, Configuration configuration, String submissionDirectoryPath, String expectedOutputPath) {
         return new Project(projectName, configuration, submissionDirectoryPath, expectedOutputPath);
     }
@@ -54,7 +53,7 @@ public class Project implements Serializable {
             e.printStackTrace();
         }
 
-        // Dosya yollarını kullanarak projeyi oluştur
+
         Project project = new Project(projectName, configuration, mainFilePath, executableName);
 
         return project;

@@ -9,9 +9,7 @@ int main()
     int Final;
     float okulortalama;
     double dersort;
-    int islem;
-    int bakiye = 1000;
-    int tutar;
+    
 
     printf("vize1 : ");
     scanf("%d",&vize1);

@@ -7,7 +7,7 @@ public class Configuration {
     private String compilerPath;
     private String compilerParams;
     private String runParams;
-    private String configurationName; // Yeni özellik: Yapılandırma adı
+    private String configurationName;
     private static final String CONFIG_FOLDER = "Configurations";
 
     public Configuration() {
@@ -37,7 +37,7 @@ public class Configuration {
                 writer.println("Compiler Path: " + getCompilerPath());
                 writer.println("Compiler Parameters: " + getCompilerParams());
                 writer.println("Run Parameters: " + getRunParams());
-                writer.println("Configuration Name: " + getConfigurationName()); // Yapılandırma adını dosyaya yaz
+                writer.println("Configuration Name: " + getConfigurationName());
                 System.out.println("Configuration saved: " + getConfigurationName());
             } catch (IOException e) {
                 System.out.println("Failed to save configuration: " + getConfigurationName());
