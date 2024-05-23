@@ -1,0 +1,3 @@
+Configuration Name: deneme
+Language: JAVA
+Compiler Path: C:\Users\ahmet\Desktop\CE-316-PROJECT-main\Configurations\jdk-18\bin

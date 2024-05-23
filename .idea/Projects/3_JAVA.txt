@@ -1,0 +1,6 @@
+Student ID: 3
+Configuration : TextField[id=newProjectConfigName, styleClass=text-input text-field]
+Main File: C:\Users\ahmet\Desktop\CE-316-PROJECT-main\src\main\resources\code_resource\proje.java
+Expected Output File:C:\Users\ahmet\Desktop\output.txt
+
+Result: Failed!

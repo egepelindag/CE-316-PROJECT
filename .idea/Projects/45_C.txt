@@ -1,0 +1,4 @@
+Student ID: 45
+Configuration : C:\Users\ahmet\Desktop\CE-316-PROJECT-main\Configurations\c1_config.txt
+Main File: C:\Users\ahmet\Desktop\CE-316-PROJECT-main\src\main\resources\code_resource\main.c
+Expected Output File:C:\Users\ahmet\Desktop\output.txt

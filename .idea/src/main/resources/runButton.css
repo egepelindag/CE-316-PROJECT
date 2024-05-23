@@ -1,0 +1,26 @@
+/* Button hover animasyonu */
+.buttonRun {
+    -fx-background-color: #70B4FC;
+    -fx-text-fill: #3D3837;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+    -fx-transition-duration: 0.3s; /* Doğru özellik */
+}
+
+.buttonRun:hover {
+    -fx-background-color: #278EFA;
+    -fx-text-fill: darkred;
+    -fx-font-size: 1em;
+}
+
+.buttonRun:pressed {
+    -fx-background-color: #278EFA;
+    -fx-background-radius: 5px;
+    -fx-scale-x: 0.9;
+    -fx-scale-y: 0.9;
+    -fx-transition-duration: 0.3s; /* Geçiş süresi */
+}

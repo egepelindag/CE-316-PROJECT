@@ -1,0 +1,6 @@
+Student ID: 12
+Configuration : C:\jdk-18\bin
+Main File: C:\Users\ahmet\Desktop\CE-316-PROJECT-main\src\main\resources\code_resource\proje.java
+Expected Output File:C:\Users\ahmet\Desktop\Yeni Metin Belgesi.txt
+
+Result: Failed!

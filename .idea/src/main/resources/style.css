@@ -1,0 +1,27 @@
+.button {
+    -fx-background-color: orange;
+    -fx-text-fill: #3D3837;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+    -fx-transition-duration: 0.3s; /* Doğru özellik */
+}
+
+.button:hover {
+    -fx-background-color: darkorange;
+    -fx-text-fill: darkred;
+    -fx-font-size: 1em;
+}
+
+.button:pressed {
+    -fx-background-color: darkorange;
+    -fx-background-radius: 5px;
+    -fx-scale-x: 0.9;
+    -fx-scale-y: 0.9;
+    -fx-transition-duration: 0.3s; /* Geçiş süresi */
+}
+
+
