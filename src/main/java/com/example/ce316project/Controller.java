@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -112,6 +113,10 @@ public class Controller {
 
     @FXML
     private TextField newProjectConfigName;
+    @FXML
+    private  Button configCreateOkButton;
+    @FXML
+    private Button newConfigBackButton;
 
 
 
@@ -332,6 +337,12 @@ public class Controller {
         currentStage.centerOnScreen();
         currentStage.setResizable(false);
 
+    }
+    @FXML
+    public void pageCloseButton(ActionEvent event) {
+
+        Stage stage = (Stage) configCreateOkButton.getScene().getWindow();
+        stage.close();
     }
 
 
@@ -640,6 +651,11 @@ public class Controller {
         currentStage.setResizable(false);
 
     }
+    @FXML
+    public void backToNewProject() {
+        Stage stage = (Stage) newConfigBackButton.getScene().getWindow();
+        stage.close();
+    }
 
 
 
@@ -659,10 +675,34 @@ public class Controller {
             writer.write("Language: " + configLang);
             writer.newLine();
             writer.write("Compiler Path: " + configPath);
+
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("createConfigPopUp.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+
+
+            Stage newStage = new Stage();
+            newStage.setScene(scene);
+            newStage.setTitle("Create Config");
+
+
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            newStage.initOwner(currentStage);
+            newStage.initModality(Modality.WINDOW_MODAL);
+
+
+            newStage.centerOnScreen();
+            newStage.setResizable(false);
+
+
+            newStage.show();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
 
 }

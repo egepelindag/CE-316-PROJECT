@@ -1,0 +1,6 @@
+Student ID: 123456
+Configuration Name: JAVA
+Main File: C:\Users\Lenovo\Desktop\CE-316-PROJECT-main\src\main\resources\code_resource\proje.java
+Expected Output File:C:\Users\Lenovo\Desktop\Yeni Metin Belgesi (2).txt
+
+Result: Failed!

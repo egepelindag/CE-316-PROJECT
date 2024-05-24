@@ -10,7 +10,7 @@
     <children>
         <TextField fx:id="newConfigName" layoutX="72.0" layoutY="48.0" prefHeight="42.0" prefWidth="467.0" promptText="Configuration Name" />
         <TextField fx:id="newConfigPath" layoutX="72.0" layoutY="141.0" prefHeight="42.0" prefWidth="347.0" promptText="Compiler Path" />
-        <Button fx:id="newConfigCreateButton" layoutX="197.0" layoutY="369.0" mnemonicParsing="false" onAction="#createConfigurationOnAction" prefHeight="26.0" prefWidth="178.0" style="-fx-border-color: black; -fx-background-radius: 100; -fx-border-radius: 100;" stylesheets="@../../../style.css" text="CREATE" />
+        <Button fx:id="newConfigCreateButton" layoutX="360.0" layoutY="368.0" mnemonicParsing="false" onAction="#createConfigurationOnAction" prefHeight="26.0" prefWidth="178.0" style="-fx-border-color: black; -fx-background-radius: 100; -fx-border-radius: 100;" stylesheets="@../../../style.css" text="CREATE" />
         <Button fx:id="newConfigChooseButton" layoutX="435.0" layoutY="141.0" mnemonicParsing="false" onAction="#chooseNewConfig" prefHeight="42.0" prefWidth="104.0" style="-fx-border-color: black; -fx-border-radius: 100; -fx-background-radius: 100;" stylesheets="@../../../style.css" text="CHOOSE" />
       <MenuButton fx:id="chooseConfigLanguage" layoutX="72.0" layoutY="223.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="145.0" text="Choose Language">
         <items>
@@ -20,5 +20,6 @@
             <MenuItem fx:id="choosePythonConfig" mnemonicParsing="false" onAction="#pythonConfigOnAction" text="PYTHON" />
         </items>
       </MenuButton>
+      <Button fx:id="newConfigBackButton" layoutX="72.0" layoutY="368.0" mnemonicParsing="false" onAction="#backToNewProject" prefHeight="26.0" prefWidth="178.0" style="-fx-border-color: black; -fx-background-radius: 100; -fx-border-radius: 100;" stylesheets="@../../../style.css" text="BACK" />
     </children>
 </AnchorPane>
