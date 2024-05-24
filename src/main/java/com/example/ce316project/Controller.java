@@ -91,11 +91,27 @@ public class Controller {
     private TextArea resultText;
     @FXML
     private TextField studentNameTextField;
-    
+    @FXML
+    private MenuButton chooseConfigLanguage;
+    @FXML
+    private MenuItem chooseJavaConfig;
+    @FXML
+    private MenuItem chooseC_Config;
+    @FXML
+    private MenuItem chooseCppConfig;
+    @FXML
+    private MenuItem choosePythonConfig;
     @FXML
     private Button welcomeHelpButton;
 
+    @FXML
     private Button createProjectBackButton;
+
+    @FXML
+    private Button chooseConfigButton;
+
+    @FXML
+    private TextField newProjectConfigName;
 
 
 
@@ -128,42 +144,46 @@ public class Controller {
 
     @FXML
     public void javaConfigOnAction(ActionEvent event) {
-        configMenuButton.setText("JAVA");
-        configuration = Configuration.createConfiguration("Java", "", "-g", "","java");
+       // configMenuButton.setText("JAVA");
+        chooseConfigLanguage.setText("JAVA");
+       /* configuration = Configuration.createConfiguration("JAVA", newConfigPath.getText(), "-g", "",newConfigName.getText());
 
         configuration.saveConfiguration();
 
         project.setConfiguration(configuration);
-
-        System.out.println(project.getConfiguration().getCompilerPath());
+        System.out.println(project.getConfiguration().getConfigurationName());
+        System.out.println(project.getConfiguration().getLanguage());
+        System.out.println(project.getConfiguration().getCompilerPath());*/
     }
 
     @FXML
     public void cConfigMenuOnAction(ActionEvent event) {
-        configMenuButton.setText("C");
-        configuration = Configuration.createConfiguration("C", "", "-Wall -o", "","c");
+        chooseConfigLanguage.setText("C");
+      /*  configuration = Configuration.createConfiguration("C", "", "-Wall -o", "","c");
         configuration.saveConfiguration();
 
-        project.setConfiguration(configuration);
+        project.setConfiguration(configuration);*/
     }
 
 
     @FXML
-    public void cSharpConfigOnAction(ActionEvent event) {
-        configMenuButton.setText("C#");
+    public void cPPConfigOnAction(ActionEvent event) {
+        chooseConfigLanguage.setText("C++");
+        /*configMenuButton.setText("C#");
         configuration = Configuration.createConfiguration("C#", "csc", "-out:", "mono","c#");
         configuration.saveConfiguration();
 
-        project.setConfiguration(configuration);
+        project.setConfiguration(configuration);*/
     }
 
     @FXML
     public void pythonConfigOnAction(ActionEvent event) {
-        configMenuButton.setText("Python");
+        chooseConfigLanguage.setText("PYTHON");
+        /*configMenuButton.setText("Python");
         configuration = Configuration.createConfiguration("Python", "python", "", "python","python");
         configuration.saveConfiguration();
 
-        project.setConfiguration(configuration);
+        project.setConfiguration(configuration);*/
     }
 
 
@@ -172,39 +192,55 @@ public class Controller {
     public void runButton(ActionEvent event) throws IOException, InterruptedException {
         Compiler compiler = new Compiler();
 
+
+
         
         System.out.println("config name = " + project.getConfiguration().getConfigurationName());
+        System.out.println("compiler path= "+project.getConfiguration().getCompilerPath());
         String codeOutput="";
-        String language="";
+        String language=project.getConfiguration().getLanguage();
         System.out.println(project.getConfiguration().getConfigurationName());
+        System.out.println(language);
 
 
-        if (Objects.equals(project.getConfiguration().getConfigurationName(), "JAVA")){
+
+
+
+        if (Objects.equals(project.getConfiguration().getLanguage(), "JAVA")){
             language="JAVA";
             System.out.println("main file path: " + project.getSubmissionDirectoryPath());
 
             System.out.println("input " + projectInput.getText());
 
-
             String userInput = projectInput.getText();
 
-            codeOutput = compiler.runJavaProgram(project.getSubmissionDirectoryPath(), userInput);
+            codeOutput = compiler.runJavaProgram(project.getSubmissionDirectoryPath(), userInput, project.getConfiguration().getCompilerPath());
 
             System.out.println("output: " + codeOutput);
 
-            if (codeOutput != null) {
-                submissionOutputText.setText(codeOutput);
-            } else {
-                submissionOutputText.setText("Error!");
-            }
+            submissionOutputText.setText(codeOutput);
 
 
-        }else if (Objects.equals(project.getConfiguration().getConfigurationName(), "C")){
+
+        }else if (Objects.equals(project.getConfiguration().getLanguage(), "C")){
             language="C";
             System.out.println("C code running");
-            System.out.println("input: "+projectInput.getText());
             String CInput = projectInput.getText();
-            codeOutput = compiler.runCProgram(project.getSubmissionDirectoryPath(), CInput);
+            codeOutput = compiler.runCProgram(project.getSubmissionDirectoryPath(), CInput,project.getConfiguration().getCompilerPath());
+            System.out.println("output: "+codeOutput);
+            submissionOutputText.setText(codeOutput);
+        }else if (Objects.equals(project.getConfiguration().getLanguage(), "C++")){
+            language="C++";
+            System.out.println("C++ code running");
+            String CPPInput = projectInput.getText();
+            codeOutput = compiler.runCppProgram(project.getSubmissionDirectoryPath(), CPPInput,project.getConfiguration().getCompilerPath());
+            System.out.println("output: "+codeOutput);
+            submissionOutputText.setText(codeOutput);
+        }else if (Objects.equals(project.getConfiguration().getLanguage(), "PYTHON")){
+            language="PYTHON";
+            System.out.println("Python code running");
+            String pythonInput = projectInput.getText();
+            codeOutput = compiler.runPythonProgram(project.getSubmissionDirectoryPath(), pythonInput,project.getConfiguration().getCompilerPath());
             System.out.println("output: "+codeOutput);
             submissionOutputText.setText(codeOutput);
         }
@@ -266,6 +302,26 @@ public class Controller {
 
 
     @FXML
+    public void chooseConfigButton(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose Configuration");
+
+
+        File initialDirectory = new File("Configurations");
+        if (initialDirectory.exists()) {
+            fileChooser.setInitialDirectory(initialDirectory);
+        }
+
+        Stage stage = (Stage) chooseExpectedOutpuButton.getScene().getWindow();
+        File selectedFile = fileChooser.showOpenDialog(stage);
+        if (selectedFile != null) {
+
+            newProjectConfigName.setText(selectedFile.getAbsolutePath());
+        }
+    }
+
+
+    @FXML
     public void createProjectBackButtonOnAction(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("welcomePage.fxml"));
         Parent root = loader.load();
@@ -283,14 +339,19 @@ public class Controller {
 
     @FXML
     public void importConfigButton(ActionEvent event) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Choose File");
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        directoryChooser.setTitle("Choose Directory");
         Stage stage = (Stage) importConfigurationButton.getScene().getWindow();
-        File selectedFile = fileChooser.showOpenDialog(stage);
-        if (selectedFile != null) {
-            System.out.println("File: " + selectedFile.getAbsolutePath());
+        File selectedDirectory = directoryChooser.showDialog(stage);
+
+
+        if (selectedDirectory != null) {
+            configuration.setCompilerPath(selectedDirectory.getAbsolutePath());
+            project.setConfiguration(configuration);
+            System.out.println("Directory: " + selectedDirectory.getAbsolutePath());
         }
     }
+
 
     @FXML
     public void submissionDirectoryChooseButton(ActionEvent event) {
@@ -319,14 +380,31 @@ public class Controller {
     @FXML
     public void createProjectOnAction(ActionEvent event) throws IOException {
         String name = createProjectGetName.getText();
-        String config = configMenuButton.getText();
+        String config = newProjectConfigName.getText();
         String submissionDirectoryPath=submissionDirectoryTextField.getText();
         String expectedOutput = expectedOutputFileDirectoryTextField.getText();
 
+        Configuration configuration1=new Configuration();
 
+        try (BufferedReader okuyucu = new BufferedReader(new FileReader(newProjectConfigName.getText()))) {
+            String satir;
+            while ((satir = okuyucu.readLine()) != null) {
+                if (satir.startsWith("Configuration Name:")) {
+                    configuration1.setConfigurationName(satir.substring(satir.indexOf(":") + 1).trim());
+                } else if (satir.startsWith("Language:")) {
+                    configuration1.setLanguage(satir.substring(satir.indexOf(":") + 1).trim());
+                }else if ((satir.startsWith("Compiler Path:"))) {
+                    configuration1.setCompilerPath(satir.substring(satir.indexOf(":") + 1).trim());
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        project.setConfiguration(configuration1);
 
         project.setProjectName(name);
-        project.getConfiguration().setConfigurationName(config);
         project.setSubmissionDirectoryPath(submissionDirectoryPath);
         project.setExpectedOutputPath(expectedOutput);
 
@@ -349,11 +427,11 @@ public class Controller {
         }
 
 
-        File projectFile = new File(directory, project.getProjectName()+"_"+project.getConfiguration().getConfigurationName() + ".txt");
+        File projectFile = new File(directory, project.getProjectName()+"_"+project.getConfiguration().getLanguage() + ".txt");
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(projectFile))) {
             writer.write("Student ID: " + project.getProjectName());
             writer.newLine();
-            writer.write("Configuration Name: " + project.getConfiguration().getConfigurationName());
+            writer.write("Configuration : " + newProjectConfigName.getText());
             writer.newLine();
             writer.write("Main File: " + project.getSubmissionDirectoryPath());
             writer.newLine();
@@ -383,8 +461,9 @@ public class Controller {
         newStage.show();
 
 
-        System.out.println("dosya: "+projectFile.getParent());
+        System.out.println("file: "+projectFile.getParent());
     }
+
 
     @FXML
     public void addNewConfigOnAction(ActionEvent event) throws IOException {
@@ -399,10 +478,10 @@ public class Controller {
 
     @FXML
     public void chooseNewConfig(ActionEvent event){
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Choose File");
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        directoryChooser.setTitle("Choose File");
         Stage stage = (Stage) newConfigChooseButton.getScene().getWindow();
-        File selectedFile = fileChooser.showOpenDialog(stage);
+        File selectedFile = directoryChooser.showDialog(stage);
         if (selectedFile != null) {
             newConfigPath.setText(selectedFile.getAbsolutePath());
         }
@@ -442,6 +521,12 @@ public class Controller {
         Project openProject=new Project();
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose File");
+
+        File initialDirectory = new File("Projects");
+        if (initialDirectory.exists()) {
+            fileChooser.setInitialDirectory(initialDirectory);
+        }
+
         Stage stage = (Stage) welcomeOpenProjectButton.getScene().getWindow();
         File selectedFile = fileChooser.showOpenDialog(stage);
         if (selectedFile != null) {
@@ -460,8 +545,22 @@ public class Controller {
                 if (satir.startsWith("Student ID:")) {
                     projectName = satir.substring(satir.indexOf(":") + 1).trim();
                     openProject.setProjectName(projectName);
-                } else if (satir.startsWith("Configuration Name:")) {
-                    configuration.setConfigurationName(satir.substring(satir.indexOf(":") + 1).trim());
+
+                } else if (satir.startsWith("Configuration :")) {
+                    String cfPath=satir.substring(satir.indexOf(":") + 1).trim();
+                    //configuration.setConfigurationName(satir.substring(satir.indexOf(":") + 1).trim());
+                    try (BufferedReader reader = new BufferedReader(new FileReader(cfPath))) {
+                        String line;
+                        while ((line = reader.readLine()) != null) {
+                            if (line.startsWith("Configuration Name:")) {
+                                configuration.setConfigurationName(line.substring(line.indexOf(":") + 1).trim());
+                            } else if (line.startsWith("Language:")) {
+                                configuration.setLanguage(line.substring(line.indexOf(":") + 1).trim());
+                            } else if (line.startsWith("Compiler Path:")) {
+                                configuration.setCompilerPath(line.substring(line.indexOf(":") + 1).trim());
+                            }
+                        }
+                    }
                     openProject.setConfiguration(configuration);
                 } else if (satir.startsWith("Main File:")) {
                     mainFilePath = satir.substring(satir.indexOf(":") + 1).trim();
@@ -476,10 +575,10 @@ public class Controller {
         }
         project=openProject;
 
-        System.out.println("name : " + projectName);
+        System.out.println("Name : " + projectName);
         System.out.println("Configuration : " + project.getConfiguration().getConfigurationName());
-        System.out.println("mainFilePath : " + project.getSubmissionDirectoryPath());
-        System.out.println("expectedOutput : " + project.getExpectedOutputPath());
+        System.out.println("MainFilePath : " + project.getSubmissionDirectoryPath());
+        System.out.println("ExpectedOutput : " + project.getExpectedOutputPath());
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
         Parent root = loader.load();
@@ -513,7 +612,12 @@ public class Controller {
     @FXML
     public void mainPageOpenProject(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Choose File");
+
+        fileChooser.setTitle("Choose File");File initialDirectory = new File("Projects");
+        if (initialDirectory.exists()) {
+            fileChooser.setInitialDirectory(initialDirectory);
+        }
+
         File selectedFile = fileChooser.showOpenDialog(null);
         if (selectedFile != null) {
             System.out.println("Selected file: " + selectedFile.getAbsolutePath());
@@ -542,9 +646,7 @@ public class Controller {
     @FXML
     public void createConfigurationOnAction(ActionEvent event) {
         String configName = newConfigName.getText();
-        String configParameters = newConfigParameters.getText();
-        //String configMainFile = newConfigMainFile.getText();
-        String configExeName = newConfigExeName.getText();
+        String configLang = chooseConfigLanguage.getText();
         String configPath = newConfigPath.getText();
         File directory = new File("Configurations");
         if (!directory.exists()) {
@@ -552,13 +654,11 @@ public class Controller {
         }
         File configFile = new File(directory, configName + "_config.txt");
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(configFile))) {
-            writer.write("Config Name: " + configName);
+            writer.write("Configuration Name: " + configName);
             writer.newLine();
-            writer.write("Parameters: " + configParameters);
+            writer.write("Language: " + configLang);
             writer.newLine();
-            writer.write("Executable Name: " + configExeName);
-            writer.newLine();
-            writer.write("Path: " + configPath);
+            writer.write("Compiler Path: " + configPath);
         } catch (IOException e) {
             e.printStackTrace();
         }

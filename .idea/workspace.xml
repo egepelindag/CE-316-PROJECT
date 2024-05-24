@@ -39,7 +39,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/canbe/OneDrive/Masaüstü/CE-316-PROJE-DENEME&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/jdk-18/bin/zip.dll&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -47,7 +47,8 @@
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -100,8 +101,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
-        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17011.79" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17011.79" />
       </set>
     </attachedChunks>
   </component>
@@ -144,11 +145,27 @@
       <workItem from="1715363830097" duration="8016000" />
       <workItem from="1715372176403" duration="2029000" />
       <workItem from="1715451836426" duration="2741000" />
-      <workItem from="1715537797101" duration="350000" />
+      <workItem from="1715537797101" duration="3113000" />
+      <workItem from="1715934338702" duration="2266000" />
+      <workItem from="1715937117125" duration="456000" />
+      <workItem from="1715974648328" duration="1405000" />
+      <workItem from="1716058943917" duration="4028000" />
+      <workItem from="1716109628228" duration="8511000" />
+      <workItem from="1716403678560" duration="2844000" />
+      <workItem from="1716491948659" duration="2826000" />
+      <workItem from="1716494836658" duration="695000" />
+      <workItem from="1716495547619" duration="1540000" />
+      <workItem from="1716539158099" duration="854000" />
+      <workItem from="1716540132464" duration="28000" />
+      <workItem from="1716576446657" duration="1000000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

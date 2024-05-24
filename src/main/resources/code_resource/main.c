@@ -9,7 +9,7 @@ int main()
     int Final;
     float okulortalama;
     double dersort;
-    
+
 
     printf("vize1 : ");
     scanf("%d",&vize1);
