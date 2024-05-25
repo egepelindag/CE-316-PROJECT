@@ -1,0 +1,4 @@
+Student ID: sdfgaasdafg
+Configuration : C:\Users\PC\IdeaProjects\ce316Projectt\Configurations\asdasd_config.txt
+Main File: C:\Users\PC\Desktop\Main.java
+Expected Output File:C:\Users\PC\Desktop\OUTPUT.txt

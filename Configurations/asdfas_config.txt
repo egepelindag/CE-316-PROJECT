@@ -1,0 +1,3 @@
+Configuration Name: asdfas
+Language: JAVA
+Compiler Path: C:\Program Files (x86)\Java\jdk22\bin

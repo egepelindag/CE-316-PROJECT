@@ -474,18 +474,11 @@ public class Controller {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
         Parent root = loader.load();
-
-
-        TextField projectNameTextField = (TextField) loader.getNamespace().get("projectNameTextField");
-        projectNameTextField.setText("Student ID: "+projectName);
-
-
-
         Scene scene = new Scene(root);
-        Stage newStage = new Stage();
-        newStage.setResizable(false);
-        newStage.setScene(scene);
-        newStage.show();
+        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        currentStage.setScene(scene);
+        currentStage.centerOnScreen();
+        currentStage.setResizable(false);
 
 
         System.out.println("file: "+projectFile.getParent());
