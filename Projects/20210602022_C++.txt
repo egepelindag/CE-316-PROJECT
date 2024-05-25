@@ -1,0 +1,6 @@
+Student ID: 20210602022
+Configuration : C:\Users\Canberk\Masaüstü\CE-316-PROJECT\Configurations\c++_config_config.txt
+Main File: C:\Users\Canberk\Masaüstü\CE-316-PROJECT\src\main\resources\code_resource\c.cpp
+Expected Output File:C:\Users\Canberk\Masaüstü\CE-316-PROJECT\src\main\resources\output_resource\c++_output
+
+Result: Success!

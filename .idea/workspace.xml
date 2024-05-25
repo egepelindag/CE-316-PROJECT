@@ -9,7 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e23c1c2d-1548-4373-ad60-b48259fc1f6d" name="Changes" comment="" />
+    <list default="true" id="e23c1c2d-1548-4373-ad60-b48259fc1f6d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ce316Project_jar/ce316Project.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ce316Project_jar/ce316Project.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/program.exe" beforeDir="false" afterPath="$PROJECT_DIR$/program.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/code_resource/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/code_resource/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/code_resource/proje.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/code_resource/proje.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/code_resource/proje.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/code_resource/proje.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,7 +43,9 @@
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="2fvQMsf8AAUdAk2hn0F4bzgAzcZ" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -49,17 +60,19 @@
     "JAR Application.ce316project.jar.executor": "Run",
     "Maven.ce316Project [clean].executor": "Run",
     "Maven.ce316Project [install].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Program Files (x86)/Java/javafx-sdk-22.0.1/bin/vcruntime140_1.dll",
+    "last_opened_file_path": "C:/Users/Canberk/Masaüstü/CE-316-PROJECT",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.14941406",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
@@ -78,7 +91,7 @@
       <recent name="C:\Users\ahmet\Desktop\CE-316-PROJECT-main\src\main\resources\com\example\ce316project" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main_1">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.ce316project.Main" />
       <module name="ce316Project" />
@@ -131,20 +144,9 @@
       <option name="JAR_PATH" value="$PROJECT_DIR$/target/ce316project.jar" />
       <method v="2" />
     </configuration>
-    <list>
-      <item itemvalue="Application.Main_1" />
-      <item itemvalue="Application.Main" />
-      <item itemvalue="JAR Application.ce316Project.jar (1)" />
-      <item itemvalue="JAR Application.ce316Project.jar" />
-      <item itemvalue="JAR Application.ce316project.jar" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main_1" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JAR Application.ce316Project.jar (1)" />
-        <item itemvalue="JAR Application.ce316Project.jar" />
-        <item itemvalue="JAR Application.ce316project.jar" />
       </list>
     </recent_temporary>
   </component>
@@ -215,6 +217,7 @@
       <workItem from="1716637467375" duration="1262000" />
       <workItem from="1716639235918" duration="9613000" />
       <workItem from="1716665919787" duration="3349000" />
+      <workItem from="1716673757078" duration="1517000" />
     </task>
     <servers />
   </component>
