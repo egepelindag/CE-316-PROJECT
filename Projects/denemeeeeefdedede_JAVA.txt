@@ -1,6 +1,0 @@
-Student ID: denemeeeeefdedede
-Configuration : C:\Users\PC\IdeaProjects\CE-316-PROJECT\Configurations\asdfas_config.txt
-Main File: C:\Users\PC\Desktop\Main.java
-Expected Output File:C:\Users\PC\Desktop\OUTPUT.txt
-
-Result: Failed!

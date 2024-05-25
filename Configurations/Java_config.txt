@@ -1,4 +1,0 @@
-Language: Java
-Compiler Parameters: -g
-Run Parameters: 
-Configuration Name: java

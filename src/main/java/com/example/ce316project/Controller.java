@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Background;
+import javafx.scene.layout.Pane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
@@ -28,7 +29,7 @@ public class Controller {
     @FXML
     private TextArea projectInput;
     @FXML
-    private MenuItem deleteConfigButton;
+    private MenuItem deleteConfigurationButton;
     @FXML
     private Button mainExitButton;
     @FXML
@@ -663,23 +664,28 @@ public class Controller {
         }
     }
 
+
+
     @FXML
     public void removeConfigButton(ActionEvent event) throws IOException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose File");
-        Stage stage = (Stage) configMenuButton.getScene().getWindow();
-        File selectedFile = fileChooser.showOpenDialog(stage);
+
         File initialDirectory = new File("Configurations");
         if (initialDirectory.exists()) {
             fileChooser.setInitialDirectory(initialDirectory);
         }
-        if (selectedFile != null) {
-            Configuration configuration1=new Configuration();
 
-            configuration1.removeConfiguration(selectedFile.getName());
+        Stage stage = (Stage) projectInput.getScene().getWindow();
+
+        File selectedFile = fileChooser.showOpenDialog(stage);
+
+        if (selectedFile != null) {
+            Configuration.removeConfiguration(selectedFile.getName());
             System.out.println("File: " + selectedFile.getAbsolutePath());
         }
     }
+
 
 
 

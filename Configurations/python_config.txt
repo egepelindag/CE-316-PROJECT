@@ -1,3 +1,0 @@
-Configuration Name: python
-Language: PYTHON
-Compiler Path: C:\Users\ahmet\AppData\Local\Programs\Python\Python312\

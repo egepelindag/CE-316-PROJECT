@@ -1,3 +1,0 @@
-Configuration Name: java18
-Language: JAVA
-Compiler Path: C:\jdk-18\bin

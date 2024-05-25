@@ -1,3 +1,0 @@
-Configuration Name: cpp
-Language: C++
-Compiler Path: C:\msys64\ucrt64\bin

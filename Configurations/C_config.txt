@@ -1,3 +1,0 @@
-Config Name: C
-Parameters: gcc
-Executable Name: -o program
