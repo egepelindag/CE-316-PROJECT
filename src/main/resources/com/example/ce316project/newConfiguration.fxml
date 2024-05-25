@@ -8,13 +8,28 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="517.0" prefWidth="603.0" style="-fx-background-color: lightgrey;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ce316project.Controller">
+<AnchorPane prefHeight="631.0" prefWidth="630.0" styleClass="anchor-pane" stylesheets="@../../../anchorPane.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ce316project.Controller">
     <children>
-        <TextField fx:id="newConfigName" layoutX="68.0" layoutY="110.0" prefHeight="54.0" prefWidth="477.0" promptText="Configuration Name" style="-fx-border-color: black;" />
-        <TextField fx:id="newConfigPath" layoutX="68.0" layoutY="204.0" prefHeight="42.0" prefWidth="300.0" promptText="Compiler Path" style="-fx-border-color: black;" />
-        <Button fx:id="newConfigCreateButton" layoutX="375.0" layoutY="434.0" mnemonicParsing="false" onAction="#createConfigurationOnAction" prefHeight="26.0" prefWidth="178.0" style="-fx-border-color: black;" stylesheets="@../../../style.css" text="CREATE" />
-        <Button fx:id="newConfigChooseButton" layoutX="384.0" layoutY="204.0" mnemonicParsing="false" onAction="#chooseNewConfig" prefHeight="42.0" prefWidth="161.0" style="-fx-border-color: black;" stylesheets="@../../../style.css" text="CHOOSE" />
-      <MenuButton fx:id="chooseConfigLanguage" layoutX="68.0" layoutY="291.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" style="-fx-border-color: black; -fx-background-color: white;" text="Choose Language">
+      <Label layoutX="69.0" layoutY="190.0" text="Configuration Name">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+        <TextField fx:id="newConfigName" layoutX="69.0" layoutY="220.0" prefHeight="42.0" prefWidth="477.0" promptText="Configuration Name" style="-fx-border-color: black;" />
+      <Label layoutX="68.0" layoutY="283.0" text="Compiler Path">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+        <TextField fx:id="newConfigPath" layoutX="68.0" layoutY="313.0" prefHeight="42.0" prefWidth="300.0" promptText="Compiler Path" style="-fx-border-color: black;" />
+        <Button fx:id="newConfigCreateButton" layoutX="407.0" layoutY="557.0" mnemonicParsing="false" onAction="#createConfigurationOnAction" prefHeight="26.0" prefWidth="178.0" style="-fx-border-color: black;" stylesheets="@../../../style.css" text="CREATE" />
+        <Button fx:id="newConfigChooseButton" layoutX="384.0" layoutY="313.0" mnemonicParsing="false" onAction="#chooseNewConfig" prefHeight="42.0" prefWidth="161.0" style="-fx-border-color: black;" stylesheets="@../../../style.css" text="CHOOSE" />
+      <Label layoutX="68.0" layoutY="384.0" text="Language Options">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <MenuButton fx:id="chooseConfigLanguage" layoutX="68.0" layoutY="414.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" style="-fx-border-color: black; -fx-background-color: white;" text="Choose Language">
         <items>
           <MenuItem fx:id="chooseJavaConfig" mnemonicParsing="false" onAction="#javaConfigOnAction" text="JAVA" />
           <MenuItem fx:id="chooseC_Config" mnemonicParsing="false" onAction="#cConfigMenuOnAction" text="C" />
@@ -22,9 +37,9 @@
             <MenuItem fx:id="choosePythonConfig" mnemonicParsing="false" onAction="#pythonConfigOnAction" text="PYTHON" />
         </items>
       </MenuButton>
-      <Button fx:id="newConfigBackButton" layoutX="68.0" layoutY="434.0" mnemonicParsing="false" onAction="#backToNewProject" prefHeight="26.0" prefWidth="178.0" style="-fx-border-color: black;" stylesheets="@../../../style.css" text="BACK" />
-      <Button fx:id="importConfigurationButton" layoutX="447.0" layoutY="24.0" mnemonicParsing="false" onAction="#importConfigButton" prefHeight="42.0" prefWidth="98.0" style="-fx-border-color: black;" stylesheets="@../../../style.css" text="IMPORT" />
-      <Label layoutX="68.0" layoutY="14.0" prefHeight="62.0" prefWidth="292.0" text="New Configuration" textAlignment="RIGHT">
+      <Button fx:id="newConfigBackButton" layoutX="68.0" layoutY="557.0" mnemonicParsing="false" onAction="#backToNewProject" prefHeight="26.0" prefWidth="178.0" style="-fx-border-color: black;" stylesheets="@../../../style.css" text="BACK" />
+      <Button fx:id="importConfigurationButton" layoutX="412.0" layoutY="105.0" mnemonicParsing="false" onAction="#importConfigButton" prefHeight="39.0" prefWidth="134.0" style="-fx-border-color: black;" stylesheets="@../../../style.css" text="IMPORT" />
+      <Label layoutX="72.0" layoutY="94.0" prefHeight="62.0" prefWidth="292.0" text="New Configuration" textAlignment="RIGHT">
          <font>
             <Font name="Arial Bold" size="30.0" />
          </font>

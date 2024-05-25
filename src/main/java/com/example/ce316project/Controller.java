@@ -28,6 +28,8 @@ public class Controller {
     @FXML
     private TextArea projectInput;
     @FXML
+    private MenuItem deleteConfigButton;
+    @FXML
     private Button mainExitButton;
     @FXML
     private MenuItem javaConfigMenuItem;
@@ -487,6 +489,10 @@ public class Controller {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
         Parent root = loader.load();
+
+        TextField projectNameTextField = (TextField) loader.getNamespace().get("projectNameTextField");
+        projectNameTextField.setText(projectName);
+
         Scene scene = new Scene(root);
         Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(scene);
@@ -657,6 +663,23 @@ public class Controller {
         }
     }
 
+    @FXML
+    public void removeConfigButton(ActionEvent event) throws IOException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose File");
+        Stage stage = (Stage) configMenuButton.getScene().getWindow();
+        File selectedFile = fileChooser.showOpenDialog(stage);
+        File initialDirectory = new File("Configurations");
+        if (initialDirectory.exists()) {
+            fileChooser.setInitialDirectory(initialDirectory);
+        }
+        if (selectedFile != null) {
+            Configuration configuration1=new Configuration();
+
+            configuration1.removeConfiguration(selectedFile.getName());
+            System.out.println("File: " + selectedFile.getAbsolutePath());
+        }
+    }
 
 
 

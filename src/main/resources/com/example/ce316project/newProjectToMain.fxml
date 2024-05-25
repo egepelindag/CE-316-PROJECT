@@ -5,28 +5,43 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="563.0" prefWidth="641.0" style="-fx-background-color: lightgrey;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ce316project.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="705.0" prefWidth="616.0" styleClass="anchor-pane" stylesheets="@../../../anchorPane.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ce316project.Controller">
     <children>
-        <TextField fx:id="createProjectGetName" layoutX="52.0" layoutY="101.0" prefHeight="51.0" prefWidth="539.0" promptText="Student ID" style="-fx-border-color: black; -fx-font-size: 20; -fx-font: bold;" />
-        <Text fill="#d35555" layoutX="51.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="86.7400016784668">
+        <TextField fx:id="createProjectGetName" layoutX="52.0" layoutY="133.0" prefHeight="20.0" prefWidth="537.0" promptText="Student ID" style="-fx-border-color: black; -fx-font-size: 20; -fx-font: bold;" />
+        <Label layoutX="52.0" layoutY="311.0" text="Submission File">
             <font>
-                <Font name="System Bold" size="15.0" />
-            </font></Text>
-        <TextField fx:id="submissionDirectoryTextField" layoutX="51.0" layoutY="273.0" prefHeight="44.0" prefWidth="431.0" promptText="Submission Fİle" style="-fx-border-color: black;" />
-        <Button fx:id="chooseSubmissionButton" layoutX="502.0" layoutY="273.0" mnemonicParsing="false" onAction="#submissionDirectoryChooseButton" prefHeight="44.0" prefWidth="87.0" style="-fx-border-color: black;" stylesheets="@../../../style.css" text="Choose" />
-        <TextField fx:id="expectedOutputFileDirectoryTextField" layoutX="51.0" layoutY="355.0" prefHeight="44.0" prefWidth="431.0" promptText="Expected Output File" style="-fx-border-color: black;" />
-        <Button fx:id="chooseExpectedOutpuButton" layoutX="502.0" layoutY="355.0" mnemonicParsing="false" onAction="#expectedOutputDirectoryChooseButton" prefHeight="44.0" prefWidth="87.0" style="-fx-border-color: black;" stylesheets="@../../../style.css" text="Choose" />
-        <Button fx:id="createProjectButton" layoutX="237.0" layoutY="453.0" mnemonicParsing="false" onAction="#createProjectOnAction" prefHeight="44.0" prefWidth="126.0" style="-fx-border-color: black;" stylesheets="@../../../style.css" text="CREATE" />
-        <Button fx:id="newConfigButton" layoutX="441.0" layoutY="186.0" mnemonicParsing="false" onAction="#addNewConfigOnAction" prefHeight="44.0" prefWidth="150.0" style="-fx-border-color: black;" stylesheets="@../../../style.css" text="New Configuration" />
-        <Button fx:id="createProjectBackButton" layoutX="52.0" layoutY="453.0" mnemonicParsing="false" onAction="#newProjectToMain" prefHeight="44.0" prefWidth="126.0" style="-fx-border-color: black;" stylesheets="@../../../style.css" text="BACK" />
-        <Button fx:id="chooseConfigButton" layoutX="256.0" layoutY="186.0" mnemonicParsing="false" onAction="#chooseConfigButton" prefHeight="44.0" prefWidth="173.0" style="-fx-border-color: black;" stylesheets="@../../../style.css" text="Choose Configuration" />
-        <TextField fx:id="newProjectConfigName" layoutX="51.0" layoutY="186.0" prefHeight="44.0" prefWidth="173.0" promptText="Configuration" style="-fx-border-color: black;" />
-        <Label layoutX="51.0" layoutY="14.0" prefHeight="64.0" prefWidth="220.0" text="New Project">
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+        <TextField fx:id="submissionDirectoryTextField" layoutX="51.0" layoutY="353.0" prefHeight="37.0" prefWidth="431.0" promptText="Submission Fİle" style="-fx-border-color: black;" />
+        <Button fx:id="chooseSubmissionButton" layoutX="502.0" layoutY="350.0" mnemonicParsing="false" onAction="#submissionDirectoryChooseButton" prefHeight="30.0" prefWidth="87.0" style="-fx-border-color: black;" stylesheets="@../../../style.css" text="Choose" />
+        <Label layoutX="51.0" layoutY="415.0" prefHeight="30.0" prefWidth="173.0" text="Expected Output">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+        <TextField fx:id="expectedOutputFileDirectoryTextField" layoutX="51.0" layoutY="453.0" prefHeight="37.0" prefWidth="431.0" promptText="Expected Output File" style="-fx-border-color: black;" />
+        <Button fx:id="chooseExpectedOutpuButton" layoutX="502.0" layoutY="453.0" mnemonicParsing="false" onAction="#expectedOutputDirectoryChooseButton" prefHeight="20.0" prefWidth="87.0" style="-fx-border-color: black;" stylesheets="@../../../style.css" text="Choose" />
+        <Button fx:id="createProjectButton" layoutX="463.0" layoutY="629.0" mnemonicParsing="false" onAction="#createProjectOnAction" prefHeight="44.0" prefWidth="126.0" style="-fx-border-color: black;" stylesheets="@../../../style.css" text="CREATE" />
+        <Button fx:id="newConfigButton" layoutX="439.0" layoutY="239.0" mnemonicParsing="false" onAction="#addNewConfigOnAction" prefHeight="44.0" prefWidth="150.0" style="-fx-border-color: black;" stylesheets="@../../../style.css" text="New Configuration" />
+        <Button fx:id="createProjectBackButton" layoutX="48.0" layoutY="629.0" mnemonicParsing="false" onAction="#newProjectToMain" prefHeight="44.0" prefWidth="126.0" style="-fx-border-color: black;" stylesheets="@../../../style.css" text="BACK" />
+        <Button fx:id="chooseConfigButton" layoutX="258.0" layoutY="239.0" mnemonicParsing="false" onAction="#chooseConfigButton" prefHeight="44.0" prefWidth="173.0" style="-fx-border-color: black;" stylesheets="@../../../style.css" text="Choose Configuration" />
+        <TextField fx:id="newProjectConfigName" layoutX="51.0" layoutY="239.0" prefHeight="44.0" prefWidth="173.0" promptText="Configuration" style="-fx-border-color: black;" />
+        <Label alignment="CENTER" layoutX="207.0" layoutY="30.0" prefHeight="64.0" prefWidth="220.0" text="New Project" textFill="#393e46">
             <font>
                 <Font name="System Bold" size="30.0" />
             </font>
         </Label>
+        <Label layoutX="48.0" layoutY="198.0" text="Configuration">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+      <Label layoutX="51.0" layoutY="103.0" text="Student ID:">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

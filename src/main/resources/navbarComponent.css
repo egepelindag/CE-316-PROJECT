@@ -1,0 +1,8 @@
+.menu-item {
+    -fx-font-size: 11pt;
+    -fx-font-weight: bold;
+}
+
+.menu-bar {
+    -fx-background-color: #00ADB5;
+}

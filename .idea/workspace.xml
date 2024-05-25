@@ -19,8 +19,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
-        <option value="CSS File" />
         <option value="FxmlFile" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -51,7 +51,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Program Files (x86)/Java/javafx-sdk-22.0.1/bin/vcruntime140_1.dll",
+    "last_opened_file_path": "C:/Users/PC/IdeaProjects/CE-316-PROJECT",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -212,6 +212,7 @@
       <workItem from="1716632553777" duration="4883000" />
       <workItem from="1716637467375" duration="1262000" />
       <workItem from="1716639235918" duration="9613000" />
+      <workItem from="1716665919787" duration="3349000" />
     </task>
     <servers />
   </component>

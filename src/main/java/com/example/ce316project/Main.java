@@ -22,7 +22,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("welcomePage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 525, 476);
+        Scene scene = new Scene(fxmlLoader.load(), 540, 570);
         stage.setTitle("IAE");
         stage.setScene(scene);
         stage.centerOnScreen();

@@ -58,7 +58,7 @@ public class Configuration {
     }
 
     public static void removeConfiguration(String configurationName) {
-        String configFilePath = CONFIG_FOLDER + File.separator + configurationName + "_config.txt";
+        String configFilePath = CONFIG_FOLDER + File.separator + configurationName;
         File configFile = new File(configFilePath);
         if (configFile.exists()) {
             if (configFile.delete()) {

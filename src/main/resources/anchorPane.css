@@ -1,0 +1,4 @@
+.anchor-pane {
+    -fx-background-color: linear-gradient(to top, #4D869C,#7AB2B2,#EEF7FF,#CDE8E5);
+    -fx-padding: 20px;
+}
