@@ -71,7 +71,7 @@
                 <Menu mnemonicParsing="false" styleClass="menu-item" text="Configuration">
                     <items>
                         <MenuItem fx:id="newConfigurationMenuItem" mnemonicParsing="false" onAction="#addNewConfigOnAction" text="New Configuration" />
-                        <MenuItem fx:id="deleteConfigurationButton" mnemonicParsing="false" onAction="#removeConfigButton" text="Delete Configuration" />
+                        <MenuItem fx:id="deleteConfigurationButton" mnemonicParsing="false" onAction="#removePageOpen" text="Delete Configuration" />
                     </items>
                 </Menu>
                 <Menu fx:id="mainHelpButton" mnemonicParsing="false" styleClass="menu-item" text="Help" />

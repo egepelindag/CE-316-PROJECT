@@ -47,6 +47,8 @@ public class Controller {
     @FXML
     private Button chooseSubmissionButton;
     @FXML
+    private Button removeConfigBackButton;
+    @FXML
     private Button chooseExpectedOutpuButton;
     @FXML
     private TextField submissionDirectoryTextField;
@@ -114,6 +116,8 @@ public class Controller {
 
     @FXML
     private Button chooseConfigButton;
+    @FXML
+    private TextField removeConfigName;
 
     @FXML
     private TextField newProjectConfigName;
@@ -664,10 +668,20 @@ public class Controller {
         }
     }
 
-
+    @FXML
+    public void removePageOpen(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("removeConfigPage.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage newStage = new Stage();
+        newStage.setTitle("IAE");
+        newStage.setResizable(false);
+        newStage.setScene(scene);
+        newStage.show();
+    }
 
     @FXML
-    public void removeConfigButton(ActionEvent event) throws IOException {
+    public void chooseRemoveConfig(ActionEvent event) throws IOException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose File");
 
@@ -676,14 +690,38 @@ public class Controller {
             fileChooser.setInitialDirectory(initialDirectory);
         }
 
-        Stage stage = (Stage) projectInput.getScene().getWindow();
-
-        File selectedFile = fileChooser.showOpenDialog(stage);
+        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        File selectedFile = fileChooser.showOpenDialog(currentStage);
 
         if (selectedFile != null) {
-            Configuration.removeConfiguration(selectedFile.getName());
+            removeConfigName.setText(selectedFile.getName());
             System.out.println("File: " + selectedFile.getAbsolutePath());
         }
+    }
+
+    @FXML
+    public void removeConfigButton(ActionEvent event) throws IOException {
+        Configuration.removeConfiguration(removeConfigName.getText());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("removePopUp.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+
+
+        Stage newStage = new Stage();
+        newStage.setScene(scene);
+        newStage.setTitle("Message");
+
+
+        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        newStage.initOwner(currentStage);
+        newStage.initModality(Modality.WINDOW_MODAL);
+
+
+        newStage.centerOnScreen();
+        newStage.setResizable(false);
+
+
+        newStage.show();
     }
 
 
@@ -771,7 +809,11 @@ public class Controller {
             e.printStackTrace();
         }
     }
-
+    @FXML
+    public void removeBackPopUp(ActionEvent event) throws IOException {
+        Stage stage = (Stage) removeConfigBackButton.getScene().getWindow();
+        stage.close();
+    }
 
 
 }

@@ -9,28 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e23c1c2d-1548-4373-ad60-b48259fc1f6d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Configurations/c1_config.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projects/123456_JAVA.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projects/_null.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ce316Project_jar/ce316Project.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ce316project/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ce316project/Configuration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ce316project/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ce316project/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ce316project/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ce316project/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/ce316project/createConfigPopUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/ce316project/createConfigPopUp.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/ce316project/help.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/ce316project/help.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/ce316project/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/ce316project/main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/ce316project/newConfiguration.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/ce316project/newConfiguration.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/ce316project/newProject.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/ce316project/newProject.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/ce316project/welcomePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/ce316project/welcomePage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/runButton.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/runButton.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ce316project/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ce316project/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ce316project/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ce316project/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ce316project/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ce316project/main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ce316project/newProject.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ce316project/newProject.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="e23c1c2d-1548-4373-ad60-b48259fc1f6d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,8 +19,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
-        <option value="FxmlFile" />
         <option value="CSS File" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -74,13 +53,13 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/PC/IdeaProjects/CE-316-PROJECT",
+    "last_opened_file_path": "C:/Program Files (x86)/Java/javafx-sdk-22.0.1/bin/vcruntime140_1.dll",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.14941406",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
