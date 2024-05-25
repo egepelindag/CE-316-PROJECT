@@ -18,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -46,9 +46,10 @@
     "JAR Application.ce316project.jar.executor": "Run",
     "Maven.ce316Project [clean].executor": "Run",
     "Maven.ce316Project [install].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/javafx-sdk-19/bin/vcruntime140_1.dll",
+    "last_opened_file_path": "C:/Program Files (x86)/Java/javafx-sdk-22.0.1/bin/vcruntime140_1.dll",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -130,6 +131,7 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Application.com.example.ce316.Main" />
       <item itemvalue="Application.Main" />
       <item itemvalue="JAR Application.ce316Project.jar (1)" />
       <item itemvalue="JAR Application.ce316Project-1.0-SNAPSHOT.jar" />
@@ -211,6 +213,7 @@
       <workItem from="1716629926402" duration="977000" />
       <workItem from="1716632553777" duration="4883000" />
       <workItem from="1716637467375" duration="1262000" />
+      <workItem from="1716639235918" duration="80000" />
     </task>
     <servers />
   </component>
