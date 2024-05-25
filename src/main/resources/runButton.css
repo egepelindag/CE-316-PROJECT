@@ -1,9 +1,9 @@
 /* Button hover animasyonu */
 .buttonRun {
-    -fx-background-color: #70B4FC;
+    -fx-background-color: #41B06E;
     -fx-text-fill: #3D3837;
     -fx-font-weight: bold;
-    -fx-font-size: 12px;
+    -fx-font-size: 16px;
     -fx-padding: 10px 20px;
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;

@@ -1,0 +1,4 @@
+.textFontSize {
+    -fx-font-size: 15px; /* Hata durumunda font büyüklüğü */
+    -fx-font-scale: bold;
+}

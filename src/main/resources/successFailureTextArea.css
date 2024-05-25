@@ -1,0 +1,13 @@
+/* Başarı durumu için */
+.success {
+    -fx-control-inner-background: lightgreen; /* Başarılı durumda arka plan rengi */
+    -fx-font-size: 25px;
+    -fx-font-scale: bold;/* Başarılı durumda font büyüklüğü */
+}
+
+/* Hata durumu için */
+.error {
+    -fx-control-inner-background: lightcoral; /* Hata durumunda arka plan rengi */
+    -fx-font-size: 25px; /* Hata durumunda font büyüklüğü */
+    -fx-font-scale: bold;
+}

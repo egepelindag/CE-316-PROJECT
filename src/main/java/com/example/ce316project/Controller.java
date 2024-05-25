@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.Background;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
@@ -224,6 +225,7 @@ public class Controller {
             System.out.println("output: " + codeOutput);
 
             submissionOutputText.setText(codeOutput);
+            submissionOutputText.getStyleClass().add("textFontSize");
 
 
 
@@ -234,6 +236,7 @@ public class Controller {
             codeOutput = compiler.runCProgram(project.getSubmissionDirectoryPath(), CInput,project.getConfiguration().getCompilerPath());
             System.out.println("output: "+codeOutput);
             submissionOutputText.setText(codeOutput);
+            submissionOutputText.getStyleClass().add("textFontSize");
         }else if (Objects.equals(project.getConfiguration().getLanguage(), "C++")){
             language="C++";
             System.out.println("C++ code running");
@@ -241,6 +244,7 @@ public class Controller {
             codeOutput = compiler.runCppProgram(project.getSubmissionDirectoryPath(), CPPInput,project.getConfiguration().getCompilerPath());
             System.out.println("output: "+codeOutput);
             submissionOutputText.setText(codeOutput);
+            submissionOutputText.getStyleClass().add("textFontSize");
         }else if (Objects.equals(project.getConfiguration().getLanguage(), "PYTHON")){
             language="PYTHON";
             System.out.println("Python code running");
@@ -248,20 +252,29 @@ public class Controller {
             codeOutput = compiler.runPythonProgram(project.getSubmissionDirectoryPath(), pythonInput,project.getConfiguration().getCompilerPath());
             System.out.println("output: "+codeOutput);
             submissionOutputText.setText(codeOutput);
+            submissionOutputText.getStyleClass().add("textFontSize");
         }
 
 
         String expectedOutput=project.expectedOutput(project.getExpectedOutputPath());
         expectedOutputText.setText(expectedOutput);
+        expectedOutputText.getStyleClass().add("textFontSize");
+
+
 
         String result;
         if (Objects.equals(codeOutput, expectedOutput)) {
             result = "Success!";
+            resultText.getStyleClass().add("success");
+            resultText.getStyleClass().remove("error");
         } else {
             result = "Failed!";
+            resultText.getStyleClass().add("error");
+            resultText.getStyleClass().remove("success");
         }
 
         resultText.setText(result);
+
 
         String projectPath = project.getProjectName() + "_" + language;
         String path = "Projects/" + projectPath + ".txt";
@@ -491,9 +504,27 @@ public class Controller {
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage newStage = new Stage();
+        newStage.setTitle("IAE");
         newStage.setResizable(false);
         newStage.setScene(scene);
         newStage.show();
+    }
+    @FXML
+    public void mainToNewProject(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("newProjectToMain.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage newStage = new Stage();
+        newStage.setTitle("IAE");
+        newStage.setResizable(false);
+        newStage.setScene(scene);
+        newStage.show();
+    }
+
+    @FXML
+    public void newProjectToMain(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
     }
 
     @FXML
@@ -608,10 +639,10 @@ public class Controller {
         projectNameTextField.setText(projectName);
 
         Scene scene = new Scene(root);
-        Stage newStage = new Stage();
-        newStage.setResizable(false);
-        newStage.setScene(scene);
-        newStage.show();
+        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        currentStage.setScene(scene);
+        currentStage.centerOnScreen();
+        currentStage.setResizable(false);
 
     }
 

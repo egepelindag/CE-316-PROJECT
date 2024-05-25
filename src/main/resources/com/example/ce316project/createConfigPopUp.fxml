@@ -5,19 +5,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: darkcyan;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ce316project.Controller">
+<AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: lightgrey;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ce316project.Controller">
     <children>
-        <Label layoutX="119.0" layoutY="14.0" prefHeight="39.0" prefWidth="161.0" text="SYSTEM MESSAGE" textFill="#00fa47">
+        <Label layoutX="103.0" layoutY="14.0" prefHeight="39.0" prefWidth="195.0" text="SYSTEM MESSAGE" textAlignment="CENTER" textFill="#004dff">
             <font>
-                <Font name="System Bold" size="18.0" />
+                <Font name="Arial Black" size="18.0" />
             </font>
         </Label>
-        <Label layoutX="84.0" layoutY="62.0" prefHeight="50.0" prefWidth="228.0" text="Configuration has been created" textFill="WHITE">
+        <Label layoutX="74.0" layoutY="60.0" prefHeight="50.0" prefWidth="252.0" text="Configuration has been created">
             <font>
-                <Font size="16.0" />
+                <Font name="System Bold" size="16.0" />
             </font>
         </Label>
-        <Button fx:id="configCreateOkButton" layoutX="172.0" layoutY="134.0" mnemonicParsing="false" onAction="#pageCloseButton" prefHeight="26.0" prefWidth="52.0" style="-fx-background-color: ORANGE; -fx-background-radius: 100; -fx-border-color: BLACK; -fx-border-radius: 100;" text="OK" />
+        <Button fx:id="configCreateOkButton" layoutX="163.0" layoutY="135.0" mnemonicParsing="false" onAction="#pageCloseButton" prefHeight="39.0" prefWidth="74.0" style="-fx-background-color: ORANGE; -fx-border-color: BLACK;" stylesheets="@../../../style.css" text="OK" />
     </children>
 </AnchorPane>

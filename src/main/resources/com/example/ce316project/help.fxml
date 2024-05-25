@@ -6,16 +6,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="459.0" prefWidth="600.0" style="-fx-background-color: darkcyan;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ce316project.Controller">
+<AnchorPane prefHeight="509.0" prefWidth="607.0" style="-fx-background-color: lightgrey;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ce316project.Controller">
    <children>
-      <Label layoutX="228.0" layoutY="14.0" prefHeight="31.0" prefWidth="140.0" style="-fx-background-color: lightblue; -fx-background-radius: 100;" text="               -HELP-" textAlignment="CENTER">
+      <Label layoutX="258.0" layoutY="14.0" prefHeight="36.0" prefWidth="89.0" style="-fx-background-color: ;" text=" HELP" textAlignment="CENTER" textFill="#002fff">
          <font>
-            <Font name="Calibri Bold" size="15.0" />
+            <Font name="Arial Bold" size="30.0" />
          </font></Label>
-      <TextArea editable="false" layoutX="-2.0" layoutY="80.0" prefHeight="379.0" prefWidth="609.0" text="-On the main screen, there are two buttons: &quot;New Project&quot; and &quot;Open Project&quot;. &#10;The &quot;New Project&quot; button is used to create a new project using an existing configuration &#10;and compile the code.&#10;To create a new project, the user needs to select the Student ID, Configuration, &#10;Submission Directory, and Expected Output File. &#10;Then, a new project is created using the selected configuration by clicking the &quot;Create&quot; button. &#10;If the code requires input, it can be entered, &#10;and the code is executed by clicking the &quot;Run&quot; button, and the results are displayed to the user. &#10;&#10;-The &quot;Open Project&quot; button is used to re-run a previously created project.">
+      <TextArea editable="false" layoutX="-2.0" layoutY="80.0" prefHeight="347.0" prefWidth="609.0" text="-On the main screen, there are two buttons: &quot;New Project&quot; and &quot;Open Project&quot;. &#10;The &quot;New Project&quot; button is used to create a new project using an existing configuration &#10;and compile the code.&#10;To create a new project, the user needs to select the Student ID, Configuration, &#10;Submission Directory, and Expected Output File. &#10;Then, a new project is created using the selected configuration by clicking the &quot;Create&quot; button. &#10;If the code requires input, it can be entered, &#10;and the code is executed by clicking the &quot;Run&quot; button, and the results are displayed to the user. &#10;&#10;-The &quot;Open Project&quot; button is used to re-run a previously created project.">
          <font>
             <Font size="14.0" />
          </font></TextArea>
-      <Button fx:id="helpBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainBackButton" prefHeight="31.0" prefWidth="75.0" style="-fx-background-color: DARKORANGE; -fx-border-color: black; -fx-background-radius: 100; -fx-border-radius: 100;" styleClass="..\..\..\style.css" stylesheets="@../../../style.css" text="BACK" />
+      <Button fx:id="helpBack" layoutX="446.0" layoutY="443.0" mnemonicParsing="false" onAction="#mainBackButton" prefHeight="52.0" prefWidth="147.0" style="-fx-background-color: DARKORANGE; -fx-border-color: black;" styleClass="..\..\..\style.css" stylesheets="@../../../style.css" text="BACK" />
    </children>
 </AnchorPane>
