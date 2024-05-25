@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="ce316Project:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e23c1c2d-1548-4373-ad60-b48259fc1f6d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ce316project/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ce316project/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/ce316project/newConfiguration.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/ce316project/newConfiguration.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
-    </list>
+    <list default="true" id="e23c1c2d-1548-4373-ad60-b48259fc1f6d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,11 +29,37 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2fvQMsf8AAUdAk2hn0F4bzgAzcZ" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "JAR Application.ce316Project-1.0-SNAPSHOT.jar.executor": "Run",
+    "JAR Application.ce316Project.jar (1).executor": "Run",
+    "JAR Application.ce316Project.jar.executor": "Run",
+    "JAR Application.ce316project.jar.executor": "Run",
+    "Maven.ce316Project [clean].executor": "Run",
+    "Maven.ce316Project [install].executor": "Run",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/javafx-sdk-19/bin/vcruntime140_1.dll",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.14941406",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/ce316project" />
@@ -60,6 +86,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.ce316project.Main" />
+      <module name="ce316Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.ce316project.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="com.example.ce316.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.ce316.Main" />
       <module name="ce316Project" />
@@ -73,10 +112,37 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ce316Project-1.0-SNAPSHOT.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/target/ce316Project-1.0-SNAPSHOT.jar" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ce316Project.jar (1)" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/ce316Project/ce316Project.jar" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ce316Project.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/ce316Project_jar/ce316Project.jar" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ce316project.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/target/ce316project.jar" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="JAR Application.ce316Project.jar (1)" />
+      <item itemvalue="JAR Application.ce316Project-1.0-SNAPSHOT.jar" />
+      <item itemvalue="JAR Application.ce316Project.jar" />
+      <item itemvalue="JAR Application.ce316project.jar" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.com.example.ce316.Main" />
+        <item itemvalue="JAR Application.ce316Project.jar (1)" />
+        <item itemvalue="JAR Application.ce316Project.jar" />
+        <item itemvalue="JAR Application.ce316project.jar" />
+        <item itemvalue="JAR Application.ce316Project-1.0-SNAPSHOT.jar" />
       </list>
     </recent_temporary>
   </component>
@@ -140,6 +206,11 @@
       <workItem from="1716539158099" duration="854000" />
       <workItem from="1716540132464" duration="28000" />
       <workItem from="1716576446657" duration="1000000" />
+      <workItem from="1716581005951" duration="1497000" />
+      <workItem from="1716628024736" duration="1422000" />
+      <workItem from="1716629926402" duration="977000" />
+      <workItem from="1716632553777" duration="4883000" />
+      <workItem from="1716637467375" duration="1262000" />
     </task>
     <servers />
   </component>

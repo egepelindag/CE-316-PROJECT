@@ -21,5 +21,6 @@
         </items>
       </MenuButton>
       <Button fx:id="newConfigBackButton" layoutX="72.0" layoutY="368.0" mnemonicParsing="false" onAction="#backToNewProject" prefHeight="26.0" prefWidth="178.0" style="-fx-border-color: black; -fx-background-radius: 100; -fx-border-radius: 100;" stylesheets="@../../../style.css" text="BACK" />
+      <Button fx:id="importConfigurationButton" layoutX="323.0" layoutY="230.0" mnemonicParsing="false" onAction="#importConfigButton" prefHeight="42.0" prefWidth="217.0" style="-fx-border-color: black; -fx-border-radius: 100; -fx-background-radius: 100;" stylesheets="@../../../style.css" text="IMPORT" />
     </children>
 </AnchorPane>

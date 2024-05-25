@@ -350,16 +350,32 @@ public class Controller {
 
     @FXML
     public void importConfigButton(ActionEvent event) {
-        DirectoryChooser directoryChooser = new DirectoryChooser();
-        directoryChooser.setTitle("Choose Directory");
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose File");
+
+        //bu ne amk niye choose expected??
         Stage stage = (Stage) importConfigurationButton.getScene().getWindow();
-        File selectedDirectory = directoryChooser.showDialog(stage);
+        File selectedFile = fileChooser.showOpenDialog(stage);
 
 
-        if (selectedDirectory != null) {
-            configuration.setCompilerPath(selectedDirectory.getAbsolutePath());
-            project.setConfiguration(configuration);
-            System.out.println("Directory: " + selectedDirectory.getAbsolutePath());
+
+        if (selectedFile != null) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(selectedFile))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    String content=line.substring(line.indexOf(":") + 1).trim();
+                    if (line.startsWith("Configuration Name:")) {
+                        newConfigName.setText(content);
+                    } else if (line.startsWith("Language:")) {
+                        chooseConfigLanguage.setText(content);
+                    }else if ((line.startsWith("Compiler Path:"))) {
+                        newConfigPath.setText(content);
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         }
     }
 
@@ -377,7 +393,7 @@ public class Controller {
     }
 
     @FXML
-    public void expectecOutputDirectoryChooseButton(ActionEvent event) {
+    public void expectedOutputDirectoryChooseButton(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose File");
         Stage stage = (Stage) chooseExpectedOutpuButton.getScene().getWindow();
