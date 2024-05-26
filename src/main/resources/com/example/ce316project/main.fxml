@@ -74,7 +74,6 @@
                         <MenuItem fx:id="deleteConfigurationButton" mnemonicParsing="false" onAction="#removePageOpen" text="Delete Configuration" />
                     </items>
                 </Menu>
-                <Menu fx:id="mainHelpButton" mnemonicParsing="false" styleClass="menu-item" text="Help" />
             </menus>
          <styleClass>
             <String fx:value="menu-item" />

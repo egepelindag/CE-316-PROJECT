@@ -254,16 +254,20 @@ public class Controller {
         expectedOutputText.getStyleClass().add("textFontSize");
 
 
-
         String result;
+
         if (Objects.equals(codeOutput, expectedOutput)) {
             result = "Success!";
             resultText.getStyleClass().add("success");
             resultText.getStyleClass().remove("error");
+
+
         } else {
             result = "Failed!";
             resultText.getStyleClass().add("error");
             resultText.getStyleClass().remove("success");
+
+
         }
 
         resultText.setText(result);
@@ -496,26 +500,26 @@ public class Controller {
             }
         }else {
 
-            System.out.println("Could not create!");
-            //pop up
-            //proje oluşturulamadı
-            //
-            //
-            //
-            //
-            //
-            //
-            //
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("projectCreateErrorPopUp.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
 
-            //
-            //
-            //
-            //
 
-            //
-            //
+            Stage newStage = new Stage();
+            newStage.setScene(scene);
+            newStage.setTitle("Error");
 
-            //
+
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            newStage.initOwner(currentStage);
+            newStage.initModality(Modality.WINDOW_MODAL);
+
+
+            newStage.centerOnScreen();
+            newStage.setResizable(false);
+
+
+            newStage.show();
         }
 
        /* System.out.println(project.getProjectName());
@@ -662,20 +666,26 @@ public class Controller {
                 }
             }
         } catch (IOException e) {
-            //Proje açılamadı
-            //pop up
-            //
-            //
-            //
-            //
-            //
-            //
-            //
-            //
-            //
-            //
-            //
-            //
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("welcomeOpenProjectError.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+
+
+            Stage newStage = new Stage();
+            newStage.setScene(scene);
+            newStage.setTitle("Error");
+
+
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            newStage.initOwner(currentStage);
+            newStage.initModality(Modality.WINDOW_MODAL);
+
+
+            newStage.centerOnScreen();
+            newStage.setResizable(false);
+
+
+            newStage.show();
             e.printStackTrace();
         }
         project=openProject;
@@ -744,28 +754,51 @@ public class Controller {
 
     @FXML
     public void removeConfigButton(ActionEvent event) throws IOException {
-        Configuration.removeConfiguration(removeConfigName.getText());
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("removePopUp.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
 
+        String configName = removeConfigName.getText();
+        String configFilePath = "Configurations/" + configName;
 
-        Stage newStage = new Stage();
-        newStage.setScene(scene);
-        newStage.setTitle("Message");
+        if (Files.exists(Paths.get(configFilePath)) && configName != "") {
+            Configuration.removeConfiguration(configName);
 
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("removePopUp.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
 
-        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        newStage.initOwner(currentStage);
-        newStage.initModality(Modality.WINDOW_MODAL);
+            Stage newStage = new Stage();
+            newStage.setScene(scene);
+            newStage.setTitle("Message");
 
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            newStage.initOwner(currentStage);
+            newStage.initModality(Modality.WINDOW_MODAL);
 
-        newStage.centerOnScreen();
-        newStage.setResizable(false);
+            newStage.centerOnScreen();
+            newStage.setResizable(false);
 
+            newStage.show();
+        }
+        else {
+            Configuration.removeConfiguration(configName);
 
-        newStage.show();
-    }
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("errorDeleteConfig.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+
+            Stage newStage = new Stage();
+            newStage.setScene(scene);
+            newStage.setTitle("Message");
+
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            newStage.initOwner(currentStage);
+            newStage.initModality(Modality.WINDOW_MODAL);
+
+            newStage.centerOnScreen();
+            newStage.setResizable(false);
+
+            newStage.show();
+            System.out.println("Configuration file not found: " + configName);
+        }}
 
 
 
@@ -840,8 +873,6 @@ public class Controller {
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             newStage.initOwner(currentStage);
             newStage.initModality(Modality.WINDOW_MODAL);
-
-
             newStage.centerOnScreen();
             newStage.setResizable(false);
 

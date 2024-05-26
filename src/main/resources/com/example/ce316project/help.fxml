@@ -16,6 +16,6 @@
          <font>
             <Font name="System Italic" size="15.0" />
          </font></TextArea>
-      <Button fx:id="helpBack" layoutX="531.0" layoutY="473.0" mnemonicParsing="false" onAction="#mainBackButton" prefHeight="52.0" prefWidth="147.0" style="-fx-background-color: #393E46; -fx-border-color: black;" styleClass="..\..\..\style.css" stylesheets="@../../../style.css" text="BACK" />
+      <Button fx:id="helpBack" layoutX="531.0" layoutY="473.0" mnemonicParsing="false" onAction="#mainBackButton" prefHeight="52.0" prefWidth="147.0" style="-fx-border-color: black;" stylesheets="@../../../style.css" text="BACK" />
    </children>
 </AnchorPane>

@@ -73,7 +73,6 @@ public class Compiler {
 
 
             File parentDir = new File(cppFilePath).getParentFile();
-            //Process runProcess = Runtime.getRuntime().exec(parentDir.getAbsolutePath() + File.separator + "program", null, parentDir);
             Process runProcess = Runtime.getRuntime().exec("./program", null, new File(cppFilePath).getParentFile());
 
             if (input != null && !input.isEmpty()) {
