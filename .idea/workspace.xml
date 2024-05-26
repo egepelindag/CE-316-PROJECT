@@ -9,7 +9,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e23c1c2d-1548-4373-ad60-b48259fc1f6d" name="Changes" comment="Remove Configuration" />
+    <list default="true" id="e23c1c2d-1548-4373-ad60-b48259fc1f6d" name="Changes" comment="Remove Configuration">
+      <change afterPath="$PROJECT_DIR$/Projects/_null.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/ce316Project_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/ce316Project_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ce316Project_jar/ce316Project.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ce316project/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ce316project/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ce316project/Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ce316project/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ce316project/main.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ce316project/newProject.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,13 +43,6 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -48,34 +54,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.Main.executor": "Run",
-    "Application.Main_1.executor": "Run",
-    "JAR Application.ce316Project-1.0-SNAPSHOT.jar.executor": "Run",
-    "JAR Application.ce316Project.jar (1).executor": "Run",
-    "JAR Application.ce316Project.jar.executor": "Run",
-    "JAR Application.ce316project.jar.executor": "Run",
-    "Maven.ce316Project [clean].executor": "Run",
-    "Maven.ce316Project [install].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Program Files (x86)/Java/javafx-sdk-22.0.1/bin/vcruntime140_1.dll",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.14941406",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main_1.executor&quot;: &quot;Run&quot;,
+    &quot;JAR Application.ce316Project-1.0-SNAPSHOT.jar.executor&quot;: &quot;Run&quot;,
+    &quot;JAR Application.ce316Project.jar (1).executor&quot;: &quot;Run&quot;,
+    &quot;JAR Application.ce316Project.jar.executor&quot;: &quot;Run&quot;,
+    &quot;JAR Application.ce316project.jar.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.ce316Project [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.ce316Project [install].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Program Files/JavaFX/javafx-sdk-17.0.6/bin/api-ms-win-core-processthreads-l1-1-1.dll&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.14941406&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/ce316project" />
@@ -227,6 +234,8 @@
       <workItem from="1716665919787" duration="3349000" />
       <workItem from="1716720654556" duration="2997000" />
       <workItem from="1716723963830" duration="2661000" />
+      <workItem from="1716729614448" duration="1926000" />
+      <workItem from="1716733295520" duration="394000" />
     </task>
     <task id="LOCAL-00001" summary="Remove Configuration">
       <option name="closed" value="true" />

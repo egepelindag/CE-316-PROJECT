@@ -417,19 +417,40 @@ public class Controller {
     public void createProjectOnAction(ActionEvent event) throws IOException {
         String name = createProjectGetName.getText();
         String config = newProjectConfigName.getText();
-        String submissionDirectoryPath=submissionDirectoryTextField.getText();
+        String submissionDirectoryPath = submissionDirectoryTextField.getText();
         String expectedOutput = expectedOutputFileDirectoryTextField.getText();
 
-        Configuration configuration1=new Configuration();
+        // Check if any of the fields are empty
+        if (name.isEmpty() || config.isEmpty() || submissionDirectoryPath.isEmpty() || expectedOutput.isEmpty()) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("projectCreateErrorPopUp.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
 
-        try (BufferedReader okuyucu = new BufferedReader(new FileReader(newProjectConfigName.getText()))) {
+            Stage newStage = new Stage();
+            newStage.setScene(scene);
+            newStage.setTitle("Error");
+
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            newStage.initOwner(currentStage);
+            newStage.initModality(Modality.WINDOW_MODAL);
+
+            newStage.centerOnScreen();
+            newStage.setResizable(false);
+
+            newStage.show();
+            return; // Exit the method if any field is empty
+        }
+
+        Configuration configuration1 = new Configuration();
+
+        try (BufferedReader okuyucu = new BufferedReader(new FileReader(config))) {
             String satir;
             while ((satir = okuyucu.readLine()) != null) {
                 if (satir.startsWith("Configuration Name:")) {
                     configuration1.setConfigurationName(satir.substring(satir.indexOf(":") + 1).trim());
                 } else if (satir.startsWith("Language:")) {
                     configuration1.setLanguage(satir.substring(satir.indexOf(":") + 1).trim());
-                }else if ((satir.startsWith("Compiler Path:"))) {
+                } else if (satir.startsWith("Compiler Path:")) {
                     configuration1.setCompilerPath(satir.substring(satir.indexOf(":") + 1).trim());
                 }
             }
@@ -437,24 +458,17 @@ public class Controller {
             e.printStackTrace();
         }
 
-
         project.setConfiguration(configuration1);
-
         project.setProjectName(name);
-
         project.setSubmissionDirectoryPath(submissionDirectoryPath);
         project.setExpectedOutputPath(expectedOutput);
 
-
-
         System.out.println(project.getProjectName());
         System.out.println(project.getConfiguration().getConfigurationName());
-        if (project.getSubmissionDirectoryPath() != "" && project.getExpectedOutputPath()!="") {
+        if (!project.getSubmissionDirectoryPath().isEmpty() && !project.getExpectedOutputPath().isEmpty()) {
             System.out.println(project.getSubmissionDirectoryPath());
             System.out.println(project.getExpectedOutputPath());
-        }
-        else{
-
+        } else {
             System.out.println("NULL");
         }
 
@@ -463,23 +477,21 @@ public class Controller {
             directory.mkdirs();
         }
 
-
-        if (project.getProjectName()!=""&& project.getConfiguration().getConfigurationName()!=""  &&project.getSubmissionDirectoryPath() != "" && project.getExpectedOutputPath()!=""){
-            File projectFile = new File(directory, project.getProjectName()+"_"+project.getConfiguration().getLanguage() + ".txt");
+        if (!project.getProjectName().isEmpty() && !project.getConfiguration().getConfigurationName().isEmpty()
+                && !project.getSubmissionDirectoryPath().isEmpty() && !project.getExpectedOutputPath().isEmpty()) {
+            File projectFile = new File(directory, project.getProjectName() + "_" + project.getConfiguration().getLanguage() + ".txt");
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(projectFile))) {
                 writer.write("Student ID: " + project.getProjectName());
                 writer.newLine();
-                writer.write("Configuration : " + newProjectConfigName.getText());
+                writer.write("Configuration: " + newProjectConfigName.getText());
                 writer.newLine();
                 writer.write("Main File: " + project.getSubmissionDirectoryPath());
                 writer.newLine();
-                writer.write("Expected Output File:" + project.getExpectedOutputPath());
+                writer.write("Expected Output File: " + project.getExpectedOutputPath());
                 writer.newLine();
-
 
                 System.out.println(project.getProjectName());
                 String projectName = project.getProjectName();
-
 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
                 Parent root = loader.load();
@@ -493,34 +505,30 @@ public class Controller {
                 currentStage.centerOnScreen();
                 currentStage.setResizable(false);
 
-
-                System.out.println("file: "+projectFile.getParent());
+                System.out.println("file: " + projectFile.getParent());
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }else {
-
+        } else {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("projectCreateErrorPopUp.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
-
 
             Stage newStage = new Stage();
             newStage.setScene(scene);
             newStage.setTitle("Error");
 
-
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             newStage.initOwner(currentStage);
             newStage.initModality(Modality.WINDOW_MODAL);
 
-
             newStage.centerOnScreen();
             newStage.setResizable(false);
 
-
             newStage.show();
         }
+    }
+
 
        /* System.out.println(project.getProjectName());
         String projectName = project.getProjectName();
@@ -540,7 +548,7 @@ public class Controller {
 
 
         System.out.println("file: "+projectFile.getParent());*/
-    }
+
 
 
     @FXML
@@ -642,7 +650,7 @@ public class Controller {
                     projectName = satir.substring(satir.indexOf(":") + 1).trim();
                     openProject.setProjectName(projectName);
 
-                } else if (satir.startsWith("Configuration :")) {
+                } else if (satir.startsWith("Configuration:")) {
                     String cfPath=satir.substring(satir.indexOf(":") + 1).trim();
                     try (BufferedReader reader = new BufferedReader(new FileReader(cfPath))) {
                         String line;
@@ -690,10 +698,10 @@ public class Controller {
         }
         project=openProject;
 
-        System.out.println("Name : " + projectName);
-        System.out.println("Configuration : " + project.getConfiguration().getConfigurationName());
-        System.out.println("MainFilePath : " + project.getSubmissionDirectoryPath());
-        System.out.println("ExpectedOutput : " + project.getExpectedOutputPath());
+        System.out.println("Student ID: " + projectName);
+        System.out.println("Configuration: " + project.getConfiguration().getConfigurationName());
+        System.out.println("MainFilePath: " + project.getSubmissionDirectoryPath());
+        System.out.println("ExpectedOutput: " + project.getExpectedOutputPath());
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
         Parent root = loader.load();
