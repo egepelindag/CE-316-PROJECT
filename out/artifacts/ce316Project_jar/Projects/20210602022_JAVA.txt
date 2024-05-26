@@ -1,6 +1,0 @@
-Student ID: 20210602022
-Configuration: C:\Users\Canberk\Masaüstü\CE-316-PROJECT\out\artifacts\ce316Project_jar\Configurations\java1_config.txt
-Main File: C:\Users\Canberk\Masaüstü\CE-316-PROJECT\src\main\resources\code_resource\proje.java
-Expected Output File: C:\Users\Canberk\Masaüstü\CE-316-PROJECT\src\main\resources\output_resource\java_output
-
-Result: Failed!

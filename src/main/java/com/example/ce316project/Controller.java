@@ -924,8 +924,9 @@ public class Controller {
                                 createProjectGetName.setText(projectName);
 
 
-                            } else if (satir.startsWith("Configuration :")) {
+                            } else if (satir.startsWith("Configuration:")) {
                                 String cfPath = satir.substring(satir.indexOf(":") + 1).trim();
+                                System.out.println(cfPath);
                                 newProjectConfigName.setText(cfPath);
 
 
@@ -942,7 +943,7 @@ public class Controller {
                 }
             }
         }
-        System.out.println("No TXT file found in the ZIP archive.");
+       // System.out.println("No TXT file found in the ZIP archive.");
     }
 
 

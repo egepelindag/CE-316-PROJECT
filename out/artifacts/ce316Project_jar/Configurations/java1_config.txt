@@ -1,3 +1,0 @@
-Configuration Name: java1
-Language: JAVA
-Compiler Path: C:\Program Files\Java\jdk-20\bin
