@@ -1,3 +1,0 @@
-Configuration Name: python_config
-Language: PYTHON
-Compiler Path: C:\Users\Canberk\AppData\Local\Programs\Python\Python312

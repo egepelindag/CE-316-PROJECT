@@ -1,3 +1,0 @@
-Configuration Name: java_config_canberk
-Language: JAVA
-Compiler Path: C:\Program Files\Java\jdk-20\bin

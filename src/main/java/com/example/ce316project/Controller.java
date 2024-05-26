@@ -18,7 +18,10 @@ import javafx.stage.Stage;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Enumeration;
 import java.util.Objects;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 import javafx.scene.control.MenuItem;
 
@@ -125,7 +128,8 @@ public class Controller {
     private  Button configCreateOkButton;
     @FXML
     private Button newConfigBackButton;
-
+    @FXML
+    private Button chooseZipButton;
 
 
     static Project project= new Project();
@@ -157,46 +161,28 @@ public class Controller {
 
     @FXML
     public void javaConfigOnAction(ActionEvent event) {
-       // configMenuButton.setText("JAVA");
+
         chooseConfigLanguage.setText("JAVA");
-       /* configuration = Configuration.createConfiguration("JAVA", newConfigPath.getText(), "-g", "",newConfigName.getText());
 
-        configuration.saveConfiguration();
-
-        project.setConfiguration(configuration);
-        System.out.println(project.getConfiguration().getConfigurationName());
-        System.out.println(project.getConfiguration().getLanguage());
-        System.out.println(project.getConfiguration().getCompilerPath());*/
     }
 
     @FXML
     public void cConfigMenuOnAction(ActionEvent event) {
         chooseConfigLanguage.setText("C");
-      /*  configuration = Configuration.createConfiguration("C", "", "-Wall -o", "","c");
-        configuration.saveConfiguration();
 
-        project.setConfiguration(configuration);*/
     }
 
 
     @FXML
     public void cPPConfigOnAction(ActionEvent event) {
         chooseConfigLanguage.setText("C++");
-        /*configMenuButton.setText("C#");
-        configuration = Configuration.createConfiguration("C#", "csc", "-out:", "mono","c#");
-        configuration.saveConfiguration();
 
-        project.setConfiguration(configuration);*/
     }
 
     @FXML
     public void pythonConfigOnAction(ActionEvent event) {
         chooseConfigLanguage.setText("PYTHON");
-        /*configMenuButton.setText("Python");
-        configuration = Configuration.createConfiguration("Python", "python", "", "python","python");
-        configuration.saveConfiguration();
 
-        project.setConfiguration(configuration);*/
     }
 
 
@@ -373,7 +359,6 @@ public class Controller {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose File");
 
-        //bu ne amk niye choose expected??
         Stage stage = (Stage) importConfigurationButton.getScene().getWindow();
         File selectedFile = fileChooser.showOpenDialog(stage);
 
@@ -452,6 +437,7 @@ public class Controller {
         project.setConfiguration(configuration1);
 
         project.setProjectName(name);
+
         project.setSubmissionDirectoryPath(submissionDirectoryPath);
         project.setExpectedOutputPath(expectedOutput);
 
@@ -474,21 +460,65 @@ public class Controller {
         }
 
 
-        File projectFile = new File(directory, project.getProjectName()+"_"+project.getConfiguration().getLanguage() + ".txt");
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(projectFile))) {
-            writer.write("Student ID: " + project.getProjectName());
-            writer.newLine();
-            writer.write("Configuration : " + newProjectConfigName.getText());
-            writer.newLine();
-            writer.write("Main File: " + project.getSubmissionDirectoryPath());
-            writer.newLine();
-            writer.write("Expected Output File:" + project.getExpectedOutputPath());
-            writer.newLine();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (project.getProjectName()!=""&& project.getConfiguration().getConfigurationName()!=""  &&project.getSubmissionDirectoryPath() != "" && project.getExpectedOutputPath()!=""){
+            File projectFile = new File(directory, project.getProjectName()+"_"+project.getConfiguration().getLanguage() + ".txt");
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(projectFile))) {
+                writer.write("Student ID: " + project.getProjectName());
+                writer.newLine();
+                writer.write("Configuration : " + newProjectConfigName.getText());
+                writer.newLine();
+                writer.write("Main File: " + project.getSubmissionDirectoryPath());
+                writer.newLine();
+                writer.write("Expected Output File:" + project.getExpectedOutputPath());
+                writer.newLine();
+
+
+                System.out.println(project.getProjectName());
+                String projectName = project.getProjectName();
+
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
+                Parent root = loader.load();
+
+                TextField projectNameTextField = (TextField) loader.getNamespace().get("projectNameTextField");
+                projectNameTextField.setText(projectName);
+
+                Scene scene = new Scene(root);
+                Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                currentStage.setScene(scene);
+                currentStage.centerOnScreen();
+                currentStage.setResizable(false);
+
+
+                System.out.println("file: "+projectFile.getParent());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else {
+
+            System.out.println("Could not create!");
+            //pop up
+            //proje oluşturulamadı
+            //
+            //
+            //
+            //
+            //
+            //
+            //
+
+            //
+            //
+            //
+            //
+
+            //
+            //
+
+            //
         }
 
-        System.out.println(project.getProjectName());
+       /* System.out.println(project.getProjectName());
         String projectName = project.getProjectName();
 
 
@@ -505,7 +535,7 @@ public class Controller {
         currentStage.setResizable(false);
 
 
-        System.out.println("file: "+projectFile.getParent());
+        System.out.println("file: "+projectFile.getParent());*/
     }
 
 
@@ -610,7 +640,6 @@ public class Controller {
 
                 } else if (satir.startsWith("Configuration :")) {
                     String cfPath=satir.substring(satir.indexOf(":") + 1).trim();
-                    //configuration.setConfigurationName(satir.substring(satir.indexOf(":") + 1).trim());
                     try (BufferedReader reader = new BufferedReader(new FileReader(cfPath))) {
                         String line;
                         while ((line = reader.readLine()) != null) {
@@ -633,6 +662,20 @@ public class Controller {
                 }
             }
         } catch (IOException e) {
+            //Proje açılamadı
+            //pop up
+            //
+            //
+            //
+            //
+            //
+            //
+            //
+            //
+            //
+            //
+            //
+            //
             e.printStackTrace();
         }
         project=openProject;
@@ -813,6 +856,54 @@ public class Controller {
     public void removeBackPopUp(ActionEvent event) throws IOException {
         Stage stage = (Stage) removeConfigBackButton.getScene().getWindow();
         stage.close();
+    }
+
+
+
+    public void readTxtFileFromZip(ActionEvent event) throws IOException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose File");
+
+        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        File zipFilePath = fileChooser.showOpenDialog(currentStage);
+
+        String projectName;
+        String mainFilePath;
+        String expectedOutput;
+
+
+        try (ZipFile zipFile = new ZipFile(zipFilePath)) {
+            Enumeration<? extends ZipEntry> entries = zipFile.entries();
+            while (entries.hasMoreElements()) {
+                ZipEntry entry = entries.nextElement();
+                if (entry.getName().endsWith(".txt")) {
+                    try (BufferedReader br = new BufferedReader(new InputStreamReader(zipFile.getInputStream(entry)))) {
+                        String satir;
+                        while ((satir = br.readLine()) != null) {
+                            if (satir.startsWith("Student ID:")) {
+                                projectName = satir.substring(satir.indexOf(":") + 1).trim();
+                                createProjectGetName.setText(projectName);
+
+
+                            } else if (satir.startsWith("Configuration :")) {
+                                String cfPath = satir.substring(satir.indexOf(":") + 1).trim();
+                                newProjectConfigName.setText(cfPath);
+
+
+                            } else if (satir.startsWith("Main File:")) {
+                                mainFilePath = satir.substring(satir.indexOf(":") + 1).trim();
+                                submissionDirectoryTextField.setText(mainFilePath);
+
+                            } else if (satir.startsWith("Expected Output File:")) {
+                                expectedOutput = satir.substring(satir.indexOf(":") + 1).trim();
+                                expectedOutputFileDirectoryTextField.setText(expectedOutput);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        System.out.println("No TXT file found in the ZIP archive.");
     }
 
 

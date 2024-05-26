@@ -1,3 +1,0 @@
-Configuration Name: python_2
-Language: PYTHON
-Compiler Path: C:\Users\Canberk\AppData\Local\Programs\Python\Launcher
