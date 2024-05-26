@@ -80,7 +80,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/jdk-18/bin/zip.dll",
+    "last_opened_file_path": "C:/Program Files (x86)/Java/javafx-sdk-22.0.1/bin/vcruntime140_1.dll",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -247,6 +247,7 @@
       <workItem from="1716729614448" duration="1926000" />
       <workItem from="1716733295520" duration="394000" />
       <workItem from="1716734259127" duration="1416000" />
+      <workItem from="1716752227099" duration="473000" />
     </task>
     <task id="LOCAL-00001" summary="Remove Configuration">
       <option name="closed" value="true" />
